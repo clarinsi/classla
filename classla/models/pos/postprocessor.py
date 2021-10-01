@@ -3,7 +3,7 @@ import unicodedata
 
 
 class InflectionalLexiconProcessor(object):
-    def __init__(self, lexicon, vocab, pretrain, preannotated_punct=False):
+    def __init__(self, lexicon, vocab, pretrain, xpos_only=True, preannotated_punct=False):
         # fills hypothesis_dictionary_xpos
         self.hypothesis_dictionary_xpos = {}
         self.hypothesis_dictionary_upos = {}
@@ -107,10 +107,12 @@ class InflectionalLexiconProcessor(object):
 
 
 class SloveneInflectionalLexiconProcessor(InflectionalLexiconProcessor):
-    def __init__(self, lexicon, vocab, pretrain, preannotated_punct=False):
-        super(SloveneInflectionalLexiconProcessor, self).__init__(lexicon, vocab, pretrain)
-        closed_classes_rules = ['P', 'S', 'C', 'Q', 'Z']
+    def __init__(self, lexicon, vocab, pretrain, xpos_only=True, preannotated_punct=False):
+        super(SloveneInflectionalLexiconProcessor, self).__init__(lexicon, vocab, pretrain, xpos_only=xpos_only)
+        closed_classes_xpos_rules = ['P', 'S', 'C', 'Q', 'Z']
+        closed_classes_upos_rules = ['PRON', 'DET', 'ADP', 'CCONJ', 'SCONJ', 'PART']
 
+        self.xpos_only = xpos_only
         self.preannotated_punct = preannotated_punct
         self.xpos_vocab = vocab['xpos']
         self.upos_vocab = vocab['upos']
@@ -119,9 +121,11 @@ class SloveneInflectionalLexiconProcessor(InflectionalLexiconProcessor):
         self.extract_lexicon_data(lexicon)
 
         # fills closed_classes
-        self.closed_classes = set()
-        self.create_closed_classes(vocab['xpos'], closed_classes_rules)
-        self.closed_classes_inverse = [vocab['xpos'][el] for el in vocab['xpos'] if vocab['xpos'][el] not in self.closed_classes]
+        self.closed_classes_xpos = set()
+        self.create_closed_xpos_classes(vocab['xpos'], closed_classes_xpos_rules)
+        self.create_closed_upos_classes(vocab['upos'], closed_classes_upos_rules)
+        self.closed_classes_xpos_inverse = [vocab['xpos'][el] for el in vocab['xpos'] if vocab['xpos'][el] not in self.closed_classes_xpos]
+        self.closed_classes_upos_inverse = [vocab['upos'][el] for el in vocab['upos'] if vocab['upos'][el] not in self.closed_classes_upos]
 
     def process_xpos(self, padded_prediction, word_strings):
         predictions = []
@@ -145,23 +149,23 @@ class SloveneInflectionalLexiconProcessor(InflectionalLexiconProcessor):
                 else:
                     if not self.preannotated_punct and self.is_punct(word_string):
                         prediction = 'Z'
-                    elif word_prediction.item() not in self.closed_classes:
+                    elif word_prediction.item() not in self.closed_classes_xpos:
                         prediction = self.xpos_vocab[word_prediction.item()]
                     else:
-                        prediction = self.xpos_vocab[self.closed_classes_inverse[padded_prediction[sent_id, word_id, self.closed_classes_inverse].argmax().item()]]
+                        prediction = self.xpos_vocab[self.closed_classes_xpos_inverse[padded_prediction[sent_id, word_id, self.closed_classes_xpos_inverse].argmax().item()]]
                 sent_predictions.append(prediction)
             predictions.append(sent_predictions)
         return predictions
 
-    def process_upos(self, padded_prediction, word_strings, xpos_preds):
+    def process_upos(self, padded_prediction, word_strings, upos_preds):
         predictions = []
 
         max_value = padded_prediction.max(2)[1]
 
-        for sent_id, (sent_indices, sent_strings, sent_xpos) in enumerate(zip(max_value, word_strings, xpos_preds)):
+        for sent_id, (sent_indices, sent_strings, sent_upos) in enumerate(zip(max_value, word_strings, upos_preds)):
             sent_predictions = []
-            for word_id, (word_prediction, word_string, word_xpos) in enumerate(zip(sent_indices, sent_strings, sent_xpos)):
-                key_tuple = (word_string, word_xpos)
+            for word_id, (word_prediction, word_string, word_upos) in enumerate(zip(sent_indices, sent_strings, sent_upos)):
+                key_tuple = (word_string, word_upos)
                 if key_tuple in self.hypothesis_dictionary_upos:
                     # if only one possible prediction in hypothesis dictionary, take it!
                     if len(self.hypothesis_dictionary_upos[key_tuple]) == 1:
@@ -174,7 +178,11 @@ class SloveneInflectionalLexiconProcessor(InflectionalLexiconProcessor):
                 elif key_tuple in self.hypothesis_dictionary_upos_fallback:
                     prediction = self.hypothesis_dictionary_upos_fallback[key_tuple][0]
                 else:
-                    prediction = self.upos_vocab[padded_prediction[sent_id, word_id].argmax().item()]
+                    if word_prediction.item() not in self.closed_classes_upos:
+                        prediction = self.upos_vocab[word_prediction.item()]
+                    else:
+                        prediction = self.upos_vocab[self.closed_classes_upos_inverse[padded_prediction[sent_id, word_id, self.closed_classes_upos_inverse].argmax().item()]]
+                        # prediction = self.upos_vocab[padded_prediction[sent_id, word_id].argmax().item()]
                 sent_predictions.append(prediction)
             predictions.append(sent_predictions)
         return predictions
@@ -187,9 +195,10 @@ class SloveneInflectionalLexiconProcessor(InflectionalLexiconProcessor):
             for word_id, (word_string, word_xpos, word_upos) in enumerate(zip(sent_strings, sent_xpos, sent_upos)):
                 key_tuple = (word_string, word_xpos, word_upos)
                 if key_tuple in self.hypothesis_dictionary_feats:
+                    prediction_candidates = list(set(self.hypothesis_dictionary_feats[key_tuple]))
                     # if only one possible prediction in hypothesis dictionary, take it!
-                    if len(self.hypothesis_dictionary_feats[key_tuple]) == 1:
-                        prediction = self.hypothesis_dictionary_feats[key_tuple][0]
+                    if len(prediction_candidates) == 1:
+                        prediction = prediction_candidates[0]
                     else:
                         raise Exception('Unexpected multiple options in "hypothesis_dictionary_feats"!')
                 else:
@@ -206,7 +215,7 @@ class SloveneInflectionalLexiconProcessor(InflectionalLexiconProcessor):
 
     def extract_lexicon_data(self, lexicon):
         """ Creates hypothesis dictionary from lexicon. """
-        if isinstance(lexicon, set):
+        if not self.xpos_only:
             for key in lexicon:
                 if key[1] in self.xpos_vocab:
                     self.hypothesis_dictionary_xpos.setdefault(key[0].lower(), []).append(key[1])
@@ -227,11 +236,17 @@ class SloveneInflectionalLexiconProcessor(InflectionalLexiconProcessor):
                 else:
                     self.hypothesis_dictionary_xpos_fallback.setdefault(key[0].lower(), []).append(key[1])
 
-    def create_closed_classes(self, vocab, closed_classes_rules):
+    def create_closed_xpos_classes(self, vocab, closed_classes_rules):
         """ Fills a set of closed classes, that contains xpos ids that are not permitted. """
         for key in vocab:
             if key[0] in closed_classes_rules:
-                self.closed_classes.add(vocab[key])
+                self.closed_classes_xpos.add(vocab[key])
+
+    def create_closed_upos_classes(self, vocab, closed_classes_rules):
+        """ Fills a set of closed classes, that contains xpos ids that are not permitted. """
+        for key in vocab:
+            if key in closed_classes_rules:
+                self.closed_classes_upos.add(vocab[key])
 
 
 processors = {"ssj": SloveneInflectionalLexiconProcessor, "sl_ssj": SloveneInflectionalLexiconProcessor}
@@ -244,7 +259,7 @@ class InflectionalLexicon:
         self.xpos_only = xpos_only
         self.preannotated_punct = preannotated_punct
         assert shorthand in processors, f"Tag {shorthand} is not supported by inflectional lexicon."
-        self.processor = processors[shorthand](lexicon, vocab, pretrain, preannotated_punct)
+        self.processor = processors[shorthand](lexicon, vocab, pretrain, xpos_only, preannotated_punct)
         self.default_processor = DefaultPostprocessor(lexicon, vocab, pretrain)
 
     def process_xpos(self, padded_prediction, word_strings):
@@ -262,7 +277,7 @@ class InflectionalLexicon:
 
 
 class DefaultPostprocessor(InflectionalLexiconProcessor):
-    def __init__(self, lexicon, vocab, pretrain, preannotated_punct=False):
+    def __init__(self, lexicon, vocab, pretrain, xpos_only=True, preannotated_punct=False):
         super(DefaultPostprocessor, self).__init__(lexicon, vocab, pretrain)
 
     def process_xpos(self, padded_prediction, word_strings):
