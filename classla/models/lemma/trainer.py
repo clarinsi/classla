@@ -11,6 +11,7 @@ from torch import nn
 import torch.nn.init as init
 
 import classla.models.common.seq2seq_constant as constant
+from classla.models.pos.trainer import Trainer as PosTrainer
 from classla.models.common.seq2seq_model import Seq2SeqModel
 from classla.models.common import utils, loss
 from classla.models.lemma import edit
@@ -56,6 +57,9 @@ class Trainer(object):
                 self.model.cpu()
                 self.crit.cpu()
             self.optimizer = utils.get_optimizer(self.args['optim'], self.parameters, self.args['lr'])
+
+        if len(self.composite_dict) == 0:
+            self.composite_dict = PosTrainer.load_influectial_lexicon(args['pos_model_path'])
 
     def update(self, batch, eval=False):
         inputs, orig_idx = unpack_batch(batch, self.use_cuda)

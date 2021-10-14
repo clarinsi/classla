@@ -236,6 +236,7 @@ def test_sl_inflectional():
     doc = nlp(SL_STANDARD)
     assert doc.to_conll().strip() == SL_STANDARD_CONLL
 
+
 def test_sl_pretokenized_conllu():
     classla.download('sl', dir=TEST_MODELS_DIR)
     nlp = classla.Pipeline('sl', tokenize_pretokenized='conllu', dir=TEST_MODELS_DIR)

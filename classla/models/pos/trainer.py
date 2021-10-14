@@ -8,7 +8,7 @@ import torch
 from torch import nn
 
 from classla.models.common.trainer import Trainer as BaseTrainer
-from classla.models.lemma.trainer import Trainer as LemmaTrainer
+# from classla.models.lemma.trainer import Trainer as LemmaTrainer
 from classla.models.common import utils, loss
 from classla.models.pos.model import Tagger
 from classla.models.pos.postprocessor import InflectionalLexicon, DefaultPostprocessor
@@ -47,13 +47,8 @@ class Trainer(BaseTrainer):
         self.postprocessor = None
         if self.constrain_via_lexicon:
             args['shorthand'] = args['shorthand'] if 'shorthand' in args else self.args['shorthand']
-            if self.dict is None:
-                inflectional_lexicon = LemmaTrainer(model_file=self.constrain_via_lexicon).composite_dict
-                xpos_only = True
-            else:
-                inflectional_lexicon = self.dict
-                xpos_only = False
-            self.postprocessor = InflectionalLexicon(inflectional_lexicon, args['shorthand'], self.vocab, pretrain, xpos_only, args['preannotated_punct'])
+            inflectional_lexicon = self.dict
+            self.postprocessor = InflectionalLexicon(inflectional_lexicon, args['shorthand'], self.vocab, pretrain, args['preannotated_punct'])
         else:
             self.postprocessor = DefaultPostprocessor(None, self.vocab, None)
         self.parameters = [p for p in self.model.parameters() if p.requires_grad]
@@ -152,3 +147,17 @@ class Trainer(BaseTrainer):
         self.model = Tagger(self.args, self.vocab, emb_matrix=emb_matrix, share_hid=self.args['share_hid'])
         self.model.load_state_dict(checkpoint['model'], strict=False)
         self.dict = checkpoint['dicts'] if 'dicts' in checkpoint else None
+
+    @staticmethod
+    def load_influectial_lexicon(filename):
+        try:
+            checkpoint = torch.load(filename, lambda storage, loc: storage)
+        except BaseException:
+            logger.error("Cannot load model from {}".format(filename))
+            raise
+
+        inf_lexicon = {}
+        for entry in checkpoint['dicts']:
+            inf_lexicon[(entry[0], entry[1])] = entry[4]
+
+        return inf_lexicon

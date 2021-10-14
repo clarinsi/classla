@@ -35,7 +35,17 @@ class LemmaProcessor(UDProcessor):
             self.config['batch_size'] = LemmaProcessor.DEFAULT_BATCH_SIZE
         else:
             self._use_identity = False
-            self._trainer = Trainer(model_file=config['model_path'], use_cuda=use_gpu)
+
+            # if 'influectional_lexicon_model_path' in self.config:
+            #     assert 'influectional_lexicon_model_path' in self.pipeline.config, 'If `pos_use_lexicon` tag is used, you must add lemma processor to processors!'
+            #     preannotated_punct = (not 'tokenize_pretokenized' in self.pipeline.config or not self.pipeline.config[
+            #         'tokenize_pretokenized']) and self.pipeline.config['tokenize_library'] == 'obeliks'
+            #     arg = {'constrain_via_lexicon': self.pipeline.config['lemma_model_path'],
+            #            'preannotated_punct': preannotated_punct}
+            # else:
+            #     arg = None
+
+            self._trainer = Trainer(args={'pos_model_path': self.pipeline.config['pos_model_path']}, model_file=config['model_path'], use_cuda=use_gpu)
 
     def _set_up_requires(self):
         if self.config.get('pos') and not self.use_identity:

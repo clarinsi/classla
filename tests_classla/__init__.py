@@ -4,6 +4,7 @@ Utilities for testing
 
 import os
 import re
+from pathlib import Path
 
 os.environ['CLASSLA_TEST_HOME'] = 'classla_test'
 
@@ -22,7 +23,14 @@ TEST_WORKING_DIR = os.getenv(TEST_HOME_VAR)
 assert os.path.basename(TEST_WORKING_DIR) == TEST_DIR_BASE_NAME, \
     f'Base name of test home dir must be: {TEST_DIR_BASE_NAME}'
 
-TEST_MODELS_DIR = f'{TEST_WORKING_DIR}/models'
+HOME_DIR = str(Path.home())
+
+TEST_MODELS_DIR = os.path.join(HOME_DIR, f'{TEST_WORKING_DIR}/models')
+
+DEFAULT_MODEL_DIR = os.getenv(
+    'CLASSLA_RESOURCES_DIR',
+    os.path.join(HOME_DIR, 'classla_resources')
+)
 
 # server resources
 SERVER_TEST_PROPS = f'{TEST_WORKING_DIR}/scripts/external_server.properties'
