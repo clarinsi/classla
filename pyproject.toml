@@ -1,0 +1,56 @@
+[build-system]
+requires = ["hatchling >= 0.8"]
+build-backend = "hatchling.build"
+
+[project]
+name = "classla"
+dynamic = ["version"]
+authors = [{ name = "CLARIN.SI", email = "info@clarin.si" }]
+description = "Adapted Stanford NLP Python Library with improvements for specific languages."
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    'Development Status :: 3 - Alpha',
+
+    'Intended Audience :: Developers',
+    'Intended Audience :: Education',
+    'Intended Audience :: Science/Research',
+    'Intended Audience :: Information Technology',
+    'Topic :: Scientific/Engineering',
+    'Topic :: Scientific/Engineering :: Artificial Intelligence',
+    'Topic :: Scientific/Engineering :: Information Analysis',
+    'Topic :: Text Processing',
+    'Topic :: Text Processing :: Linguistic',
+    'Topic :: Software Development',
+    'Topic :: Software Development :: Libraries',
+
+    'Programming Language :: Python :: 3.7',
+    'Programming Language :: Python :: 3.8',
+    'Programming Language :: Python :: 3.9',
+    'Programming Language :: Python :: 3.10',
+    'Programming Language :: Python :: 3.11',
+    'Programming Language :: Python :: 3.12',
+    'Programming Language :: Python :: 3.13',
+]
+dependencies = [
+    'numpy',
+    'protobuf==4.21.2',
+    'requests==2.28.0',
+    'torch<=2.5.1',
+    'tqdm',
+    'obeliks==1.1.6',
+    'reldi-tokeniser==1.0.3',
+]
+
+[project.urls]
+Homepage = "https://clarin.si"
+Repository = "https://github.com/clarinsi/classla"
+
+[tool.hatch.version]
+path = "classla/_version.py"
+
+[tool.hatch.build.targets.wheel]
+packages = ["classla"]
+
+[project.optional-dependencies]
+dev = ["pytest>=6.0", "twine>=6.1.0"]
