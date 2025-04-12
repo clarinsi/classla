@@ -262,7 +262,7 @@ def save(filename, model, skip_modules=True):
 
 def load(filename, pretrain):
     try:
-        checkpoint = torch.load(filename, lambda storage, loc: storage)
+        checkpoint = torch.load(filename, lambda storage, loc: storage, weights_only=False)
     except BaseException:
         logger.exception("Cannot load model from {}".format(filename))
         raise

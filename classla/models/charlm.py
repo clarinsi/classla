@@ -48,7 +48,7 @@ def build_vocab(path, cutoff=0):
     # Requires a large amount of memeory, but only need to build once
     if os.path.isdir(path):
         # here we need some trick to deal with excessively large files
-        # for each file we accumulate the counter of characters, and 
+        # for each file we accumulate the counter of characters, and
         # at the end we simply pass a list of chars to the vocab builder
         counter = Counter()
         filenames = sorted(os.listdir(path))
@@ -115,7 +115,7 @@ def parse_args():
     parser.add_argument('--weight_decay', type=float, default=0.0, help="Weight decay")
     parser.add_argument('--momentum', type=float, default=0.0, help='Momentum for SGD.')
     parser.add_argument('--cutoff', type=int, default=1000, help="Frequency cutoff for char vocab. By default we assume a very large corpus.")
-    
+
     parser.add_argument('--report_steps', type=int, default=50, help="Update step interval to report loss")
     parser.add_argument('--eval_steps', type=int, default=-1, help="Update step interval to run eval on dev; set to -1 to eval after each epoch")
     parser.add_argument('--save_name', type=str, default=None, help="File name to save the model")
@@ -141,7 +141,7 @@ def main():
 
     args = vars(args)
     logger.info("Running {} character-level language model in {} mode".format(args['direction'], args['mode']))
-    
+
     utils.ensure_dir(args['save_dir'])
 
     if args['mode'] == 'train':
@@ -171,7 +171,7 @@ def evaluate_epoch(args, vocab, data, model, criterion):
 
             output, hidden, decoded = model.forward(data, lens, hidden)
             loss = criterion(decoded.view(-1, len(vocab['char'])), target)
-            
+
             hidden = repackage_hidden(hidden)
             total_loss += data.size(1) * loss.data.item()
     return total_loss / batches.size(1)
@@ -210,7 +210,7 @@ def train(args):
 
     if os.path.exists(vocab_file):
         logger.info('Loading existing vocab file')
-        vocab = {'char': CharVocab.load_state_dict(torch.load(vocab_file, lambda storage, loc: storage))}
+        vocab = {'char': CharVocab.load_state_dict(torch.load(vocab_file, lambda storage, loc: storage, weights_only=False))}
     else:
         logger.info('Building and saving vocab')
         vocab = {'char': build_vocab(args['train_file'] if args['train_dir'] is None else args['train_dir'], cutoff=args['cutoff'])}
@@ -230,7 +230,7 @@ def train(args):
         summary_dir = '{}/{}_summary'.format(args['save_dir'], args['save_name']) if args['save_name'] is not None \
             else '{}/{}_{}_charlm_summary'.format(args['save_dir'], args['shorthand'], args['direction'])
         writer = SummaryWriter(log_dir=summary_dir)
-    
+
     # evaluate model within epoch if eval_interval is set
     eval_within_epoch = False
     if args['eval_steps'] > 0:
@@ -269,7 +269,7 @@ def train(args):
                 if args['cuda']:
                     data = data.cuda()
                     target = target.cuda()
-                
+
                 optimizer.zero_grad()
                 output, hidden, decoded = model.forward(data, lens, hidden)
                 loss = criterion(decoded.view(-1, len(vocab['char'])), target)
@@ -322,7 +322,7 @@ def evaluate(args):
     vocab = model.vocab
     data = load_data(args['eval_file'], vocab, args['direction'])
     criterion = torch.nn.CrossEntropyLoss()
-    
+
     loss = evaluate_epoch(args, vocab, data, model, criterion)
     logger.info(
         "| best model | loss {:5.2f} | ppl {:8.2f}".format(

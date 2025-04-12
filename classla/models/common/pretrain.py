@@ -44,7 +44,7 @@ class Pretrain:
     def load(self):
         if self.filename is not None and os.path.exists(self.filename):
             try:
-                data = torch.load(self.filename, lambda storage, loc: storage)
+                data = torch.load(self.filename, lambda storage, loc: storage, weights_only=False)
                 logger.debug("Loaded pretrain from {}".format(self.filename))
             except (KeyboardInterrupt, SystemExit):
                 raise
@@ -72,14 +72,14 @@ class Pretrain:
             emb = emb[:-failed]
         if len(emb) - len(VOCAB_PREFIX) != len(words):
             raise Exception("Loaded number of vectors does not match number of words.")
-        
+
         # Use a fixed vocab size
         if self._max_vocab > len(VOCAB_PREFIX) and self._max_vocab < len(words):
             words = words[:self._max_vocab - len(VOCAB_PREFIX)]
             emb = emb[:self._max_vocab]
 
         vocab = PretrainedWordVocab(words, lower=True)
-        
+
         if self._save_to_file:
             assert self.filename is not None, "Filename must be provided to save pretrained vector to file."
             # save to file
