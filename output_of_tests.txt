@@ -1,0 +1,1264 @@
+============================= test session starts ==============================
+platform linux -- Python 3.7.12, pytest-7.4.4, pluggy-1.2.0 -- /home/peterr/mambaforge/envs/classla/bin/python3.7
+cachedir: .pytest_cache
+rootdir: /cache/peterr/classla/tests_classla
+collecting ... collected 33 items
+
+test_downloads.py::test_all_downloads PASSED                             [  3%]
+test_lemmatizer.py::test_identity_lemmatizer PASSED                      [  6%]
+test_lemmatizer.py::test_full_lemmatizer PASSED                          [  9%]
+test_lemmatizer.py::test_lemmatizer_sloleks_trainer PASSED               [ 12%]
+test_lemmatizer.py::test_lemmatizer_trainer PASSED                       [ 15%]
+test_lemmatizer.py::test_lemmatizer_evaluation PASSED                    [ 18%]
+test_ner.py::test_ner FAILED                                             [ 21%]
+test_ner.py::test_ner_trainer PASSED                                     [ 24%]
+test_parser.py::test_parser FAILED                                       [ 27%]
+test_parser.py::test_tagger_trainer PASSED                               [ 30%]
+test_readme_examples.py::test_sl_standard PASSED                         [ 33%]
+test_readme_examples.py::test_sl_nonstandard PASSED                      [ 36%]
+test_readme_examples.py::test_hr_standard PASSED                         [ 39%]
+test_readme_examples.py::test_hr_nonstandard PASSED                      [ 42%]
+test_readme_examples.py::test_sr_standard PASSED                         [ 45%]
+test_readme_examples.py::test_sr_nonstandard PASSED                      [ 48%]
+test_readme_examples.py::test_bg_standard PASSED                         [ 51%]
+test_readme_examples.py::test_mk_standard PASSED                         [ 54%]
+test_readme_examples.py::test_sl_standard_jos PASSED                     [ 57%]
+test_readme_examples.py::test_sl_inflectional PASSED                     [ 60%]
+test_readme_examples.py::test_sl_pos_lemma_pretag PASSED                 [ 63%]
+test_readme_examples.py::test_sl_pretokenized_conllu PASSED              [ 66%]
+test_slovenian_pipeline.py::test_text PASSED                             [ 69%]
+test_slovenian_pipeline.py::test_conllu PASSED                           [ 72%]
+test_slovenian_pipeline.py::test_tokens PASSED                           [ 75%]
+test_slovenian_pipeline.py::test_words PASSED                            [ 78%]
+test_slovenian_pipeline.py::test_dependency_parse PASSED                 [ 81%]
+test_srl.py::test_parser PASSED                                          [ 84%]
+test_srl.py::test_parser_trainer PASSED                                  [ 87%]
+test_tagger.py::test_part_of_speech PASSED                               [ 90%]
+test_tagger.py::test_parser_trainer PASSED                               [ 93%]
+test_tokenizer.py::test_tokenize PASSED                                  [ 96%]
+test_tokenizer.py::test_pretokenized PASSED                              [100%]
+
+=================================== FAILURES ===================================
+___________________________________ test_ner ___________________________________
+
+    def test_ner():
+        nlp = classla.Pipeline(**{'processors': 'tokenize,ner', 'dir': TEST_MODELS_DIR, 'lang': 'sl'})
+        doc = nlp(SL_DOC)
+        # with open('test_data/slovenian.ner', 'w') as f:
+        #     f.write(doc.to_conll())
+>       assert SL_DOC_GOLD == doc.to_conll()
+
+E           # newpar id = 4
+E           # sent_id = 4.1
+E           # text = Življenjska pot pesnika, nesrečno zaljubljenega v bogato Primičevo Julijo, ki ji je posvetil Sonetni venec (1834) in nekatere druge ljubezenske pesmi, je bila polna raznovrstnih preizkušenj.
+E           1	Življenjska	_	_	_	_	_	_	_	NER=O
+E           2	pot	_	_	_	_	_	_	_	NER=O
+E           3	pesnika	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           4	,	_	_	_	_	_	_	_	NER=O
+E           5	nesrečno	_	_	_	_	_	_	_	NER=O
+E           6	zaljubljenega	_	_	_	_	_	_	_	NER=O
+E           7	v	_	_	_	_	_	_	_	NER=O
+E           8	bogato	_	_	_	_	_	_	_	NER=O
+E         - 9	Primičevo	_	_	_	_	_	_	_	NER=B-DERIV-PER
+E         ?                                 ------
+E         + 9	Primičevo	_	_	_	_	_	_	_	NER=B-PER
+E         - 10	Julijo	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+E         ?                             ^
+E         + 10	Julijo	_	_	_	_	_	_	_	NER=I-PER|SpaceAfter=No
+E         ?                             ^
+E           11	,	_	_	_	_	_	_	_	NER=O
+E           12	ki	_	_	_	_	_	_	_	NER=O
+E           13	ji	_	_	_	_	_	_	_	NER=O
+E           14	je	_	_	_	_	_	_	_	NER=O
+E           15	posvetil	_	_	_	_	_	_	_	NER=O
+E         - 16	Sonetni	_	_	_	_	_	_	_	NER=B-MISC
+E         ?                                ^ ^^
+E         + 16	Sonetni	_	_	_	_	_	_	_	NER=B-DERIV-PER
+E         ?                                ^^^ ^^^^^
+E         - 17	venec	_	_	_	_	_	_	_	NER=I-MISC
+E         ?                            ^^^^^^
+E         + 17	venec	_	_	_	_	_	_	_	NER=O
+E         ?                            ^
+E           18	(	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           19	1834	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           20	)	_	_	_	_	_	_	_	NER=O
+E           21	in	_	_	_	_	_	_	_	NER=O
+E           22	nekatere	_	_	_	_	_	_	_	NER=O
+E           23	druge	_	_	_	_	_	_	_	NER=O
+E           24	ljubezenske	_	_	_	_	_	_	_	NER=O
+E           25	pesmi	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           26	,	_	_	_	_	_	_	_	NER=O
+E           27	je	_	_	_	_	_	_	_	NER=O
+E           28	bila	_	_	_	_	_	_	_	NER=O
+E           29	polna	_	_	_	_	_	_	_	NER=O
+E           30	raznovrstnih	_	_	_	_	_	_	_	NER=O
+E           31	preizkušenj	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           32	.	_	_	_	_	_	_	_	NER=O
+
+
+
+E           # sent_id = 5.2
+E           # text = Del njegove pesmi Zdravljica, napisane leta 1844, je besedilo državne himne Republike Slovenije, obletnica njegove smrti pa osrednji državni kulturni praznik.
+E           1	Del	_	_	_	_	_	_	_	NER=O
+E           2	njegove	_	_	_	_	_	_	_	NER=O
+E           3	pesmi	_	_	_	_	_	_	_	NER=O
+E           4	Zdravljica	_	_	_	_	_	_	_	NER=B-MISC|SpaceAfter=No
+E         - 5	,	_	_	_	_	_	_	_	NER=I-MISC
+E         ?                       ^^^^^^
+E         + 5	,	_	_	_	_	_	_	_	NER=O
+E         ?                       ^
+E         - 6	napisane	_	_	_	_	_	_	_	NER=I-MISC
+E         ?                              ^^^^^^
+E         + 6	napisane	_	_	_	_	_	_	_	NER=O
+E         ?                              ^
+E         - 7	leta	_	_	_	_	_	_	_	NER=I-MISC
+E         ?                          ^^^^^^
+E         + 7	leta	_	_	_	_	_	_	_	NER=O
+E         ?                          ^
+E         - 8	1844	_	_	_	_	_	_	_	NER=I-MISC|SpaceAfter=No
+E         ?                          ^^^^^^
+E         + 8	1844	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E         ?                          ^
+E           9	,	_	_	_	_	_	_	_	NER=O
+E           10	je	_	_	_	_	_	_	_	NER=O
+E           11	besedilo	_	_	_	_	_	_	_	NER=O
+E           12	državne	_	_	_	_	_	_	_	NER=O
+E           13	himne	_	_	_	_	_	_	_	NER=O
+E           14	Republike	_	_	_	_	_	_	_	NER=B-LOC
+E           15	Slovenije	_	_	_	_	_	_	_	NER=I-LOC|SpaceAfter=No
+E           16	,	_	_	_	_	_	_	_	NER=O
+E           17	obletnica	_	_	_	_	_	_	_	NER=O
+E           18	njegove	_	_	_	_	_	_	_	NER=O
+E           19	smrti	_	_	_	_	_	_	_	NER=O
+E           20	pa	_	_	_	_	_	_	_	NER=O
+E           21	osrednji	_	_	_	_	_	_	_	NER=O
+E           22	državni	_	_	_	_	_	_	_	NER=O
+E           23	kulturni	_	_	_	_	_	_	_	NER=O
+E           24	praznik	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           25	.	_	_	_	_	_	_	_	NER=O
+
+E
+E           # newpar id = 8
+E           # sent_id = 8.1
+E           # text = Portret plavolasega moškega, domnevno Goldensteinov miniaturni portret Prešerna po spominu
+E           1	Portret	_	_	_	_	_	_	_	NER=O
+E           2	plavolasega	_	_	_	_	_	_	_	NER=O
+E           3	moškega	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           4	,	_	_	_	_	_	_	_	NER=O
+E           5	domnevno	_	_	_	_	_	_	_	NER=O
+E           6	Goldensteinov	_	_	_	_	_	_	_	NER=B-DERIV-PER
+E           7	miniaturni	_	_	_	_	_	_	_	NER=O
+E           8	portret	_	_	_	_	_	_	_	NER=O
+E         - 9	Prešerna	_	_	_	_	_	_	_	NER=B-PER
+E         ?                                ^^^
+E         + 9	Prešerna	_	_	_	_	_	_	_	NER=B-MISC
+E         ?                                ^^^^
+E         - 10	po	_	_	_	_	_	_	_	NER=O
+E         ?                         ^
+E         + 10	po	_	_	_	_	_	_	_	NER=I-MISC
+E         ?                         ^^^^^^
+E         - 11	spominu	_	_	_	_	_	_	_	NER=O
+E         ?                              ^
+E         + 11	spominu	_	_	_	_	_	_	_	NER=I-MISC
+E         ?                              ^^^^^^
+E
+E           # newpar id = 9
+E           # sent_id = 9.1
+E           # text = France Prešeren se je rodil kot tretji otrok in prvi sin materi Mini, rojeni Svetina (pri Muhovcu)[8] v Žirovnici ter očetu Šimnu, po domače Ribčevemu (Hribčevemu), iz Vrbe na Gorenjskem.
+E           1	France	_	_	_	_	_	_	_	NER=B-PER
+E           2	Prešeren	_	_	_	_	_	_	_	NER=I-PER
+E           3	se	_	_	_	_	_	_	_	NER=O
+E           4	je	_	_	_	_	_	_	_	NER=O
+E           5	rodil	_	_	_	_	_	_	_	NER=O
+E           6	kot	_	_	_	_	_	_	_	NER=O
+E           7	tretji	_	_	_	_	_	_	_	NER=O
+E           8	otrok	_	_	_	_	_	_	_	NER=O
+E           9	in	_	_	_	_	_	_	_	NER=O
+E           10	prvi	_	_	_	_	_	_	_	NER=O
+E           11	sin	_	_	_	_	_	_	_	NER=O
+E           12	materi	_	_	_	_	_	_	_	NER=O
+E           13	Mini	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+E           14	,	_	_	_	_	_	_	_	NER=O
+E           15	rojeni	_	_	_	_	_	_	_	NER=O
+E           16	Svetina	_	_	_	_	_	_	_	NER=B-PER
+E           17	(	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           18	pri	_	_	_	_	_	_	_	NER=O
+E         - 19	Muhovcu	_	_	_	_	_	_	_	NER=B-LOC|SpaceAfter=No
+E         ?                                ^^^
+E         + 19	Muhovcu	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+E         ?                                ^^^
+E           20	)	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           21	[	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           22	8	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           23	]	_	_	_	_	_	_	_	NER=O
+E           24	v	_	_	_	_	_	_	_	NER=O
+E           25	Žirovnici	_	_	_	_	_	_	_	NER=B-LOC
+E           26	ter	_	_	_	_	_	_	_	NER=O
+E           27	očetu	_	_	_	_	_	_	_	NER=O
+E           28	Šimnu	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+E           29	,	_	_	_	_	_	_	_	NER=O
+E           30	po	_	_	_	_	_	_	_	NER=O
+E           31	domače	_	_	_	_	_	_	_	NER=O
+E           32	Ribčevemu	_	_	_	_	_	_	_	NER=B-PER
+E           33	(	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           34	Hribčevemu	_	_	_	_	_	_	_	NER=B-LOC|SpaceAfter=No
+E           35	)	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           36	,	_	_	_	_	_	_	_	NER=O
+E           37	iz	_	_	_	_	_	_	_	NER=O
+E           38	Vrbe	_	_	_	_	_	_	_	NER=B-LOC
+E           39	na	_	_	_	_	_	_	_	NER=O
+E           40	Gorenjskem	_	_	_	_	_	_	_	NER=B-LOC|SpaceAfter=No
+E           41	.	_	_	_	_	_	_	_	NER=O
+E
+E           # sent_id = 9.2
+E           # text = Že zelo zgodaj je kazal izjemno nadarjenost, zato so ga leta 1808 poslali k stricu Jožefu, ki je kot duhovnik služboval na Kopanju pri Veliki Račni.
+E           1	Že	_	_	_	_	_	_	_	NER=O
+E           2	zelo	_	_	_	_	_	_	_	NER=O
+E           3	zgodaj	_	_	_	_	_	_	_	NER=O
+E           4	je	_	_	_	_	_	_	_	NER=O
+E           5	kazal	_	_	_	_	_	_	_	NER=O
+E           6	izjemno	_	_	_	_	_	_	_	NER=O
+E           7	nadarjenost	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           8	,	_	_	_	_	_	_	_	NER=O
+E           9	zato	_	_	_	_	_	_	_	NER=O
+E           10	so	_	_	_	_	_	_	_	NER=O
+E           11	ga	_	_	_	_	_	_	_	NER=O
+E           12	leta	_	_	_	_	_	_	_	NER=O
+E           13	1808	_	_	_	_	_	_	_	NER=O
+E           14	poslali	_	_	_	_	_	_	_	NER=O
+E           15	k	_	_	_	_	_	_	_	NER=O
+E           16	stricu	_	_	_	_	_	_	_	NER=O
+E           17	Jožefu	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+E           18	,	_	_	_	_	_	_	_	NER=O
+E           19	ki	_	_	_	_	_	_	_	NER=O
+E           20	je	_	_	_	_	_	_	_	NER=O
+E           21	kot	_	_	_	_	_	_	_	NER=O
+E           22	duhovnik	_	_	_	_	_	_	_	NER=O
+E           23	služboval	_	_	_	_	_	_	_	NER=O
+E           24	na	_	_	_	_	_	_	_	NER=O
+E           25	Kopanju	_	_	_	_	_	_	_	NER=B-LOC
+E           26	pri	_	_	_	_	_	_	_	NER=O
+E         - 27	Veliki	_	_	_	_	_	_	_	NER=B-PER
+E         ?                               ^^^
+E         + 27	Veliki	_	_	_	_	_	_	_	NER=B-LOC
+E         ?                               ^^^
+E         - 28	Račni	_	_	_	_	_	_	_	NER=I-PER|SpaceAfter=No
+E         ?                              ^^^
+E         + 28	Račni	_	_	_	_	_	_	_	NER=I-LOC|SpaceAfter=No
+E         ?                              ^^^
+E           29	.	_	_	_	_	_	_	_	NER=O
+
+
+E           # newpar id = 14
+E           # sent_id = 14.1
+E           # text = Ljubljana, Čop in Krajnska čbelica
+E           1	Ljubljana	_	_	_	_	_	_	_	NER=B-LOC|SpaceAfter=No
+E           2	,	_	_	_	_	_	_	_	NER=O
+E           3	Čop	_	_	_	_	_	_	_	NER=B-PER
+E           4	in	_	_	_	_	_	_	_	NER=O
+E           5	Krajnska	_	_	_	_	_	_	_	NER=B-LOC
+E         - 6	čbelica	_	_	_	_	_	_	_	NER=I-LOC
+E         ?                             --- -
+E         + 6	čbelica	_	_	_	_	_	_	_	NER=O
+
+
+
+E           # sent_id = 17.4
+E           # text = Njihov spor zaradi nasprotujočih si mnenj glede nadaljnjega razvoja slovenske književnosti (čbeličarji s Prešernom in Čopom so se zavzemali za visoko književnost v slovenskem jeziku, janzenisti pa za književnost, osnovano na ljudskem slovstvu po zgledu Srbov, posebno Vuka Karadžića, ki ga je cenil Kopitar), je črkarska pravda, ki se je tedaj odvijala in se samo še poglabljala.
+E           1	Njihov	_	_	_	_	_	_	_	NER=O
+E           2	spor	_	_	_	_	_	_	_	NER=O
+E           3	zaradi	_	_	_	_	_	_	_	NER=O
+E           4	nasprotujočih	_	_	_	_	_	_	_	NER=O
+E           5	si	_	_	_	_	_	_	_	NER=O
+E           6	mnenj	_	_	_	_	_	_	_	NER=O
+E           7	glede	_	_	_	_	_	_	_	NER=O
+E           8	nadaljnjega	_	_	_	_	_	_	_	NER=O
+E           9	razvoja	_	_	_	_	_	_	_	NER=O
+E           10	slovenske	_	_	_	_	_	_	_	NER=O
+E           11	književnosti	_	_	_	_	_	_	_	NER=O
+E           12	(	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           13	čbeličarji	_	_	_	_	_	_	_	NER=O
+E           14	s	_	_	_	_	_	_	_	NER=O
+E           15	Prešernom	_	_	_	_	_	_	_	NER=B-PER
+E           16	in	_	_	_	_	_	_	_	NER=O
+E         - 17	Čopom	_	_	_	_	_	_	_	NER=B-MISC
+E         ?                              ^^^^
+E         + 17	Čopom	_	_	_	_	_	_	_	NER=B-PER
+E         ?                              ^^^
+E           18	so	_	_	_	_	_	_	_	NER=O
+E           19	se	_	_	_	_	_	_	_	NER=O
+E           20	zavzemali	_	_	_	_	_	_	_	NER=O
+E           21	za	_	_	_	_	_	_	_	NER=O
+E           22	visoko	_	_	_	_	_	_	_	NER=O
+E           23	književnost	_	_	_	_	_	_	_	NER=O
+E           24	v	_	_	_	_	_	_	_	NER=O
+E           25	slovenskem	_	_	_	_	_	_	_	NER=O
+E           26	jeziku	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           27	,	_	_	_	_	_	_	_	NER=O
+E           28	janzenisti	_	_	_	_	_	_	_	NER=O
+E           29	pa	_	_	_	_	_	_	_	NER=O
+E           30	za	_	_	_	_	_	_	_	NER=O
+E           31	književnost	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           32	,	_	_	_	_	_	_	_	NER=O
+E           33	osnovano	_	_	_	_	_	_	_	NER=O
+E           34	na	_	_	_	_	_	_	_	NER=O
+E           35	ljudskem	_	_	_	_	_	_	_	NER=O
+E           36	slovstvu	_	_	_	_	_	_	_	NER=O
+E           37	po	_	_	_	_	_	_	_	NER=O
+E           38	zgledu	_	_	_	_	_	_	_	NER=O
+E           39	Srbov	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+E           40	,	_	_	_	_	_	_	_	NER=O
+E           41	posebno	_	_	_	_	_	_	_	NER=O
+E           42	Vuka	_	_	_	_	_	_	_	NER=B-PER
+E           43	Karadžića	_	_	_	_	_	_	_	NER=I-PER|SpaceAfter=No
+E           44	,	_	_	_	_	_	_	_	NER=O
+E           45	ki	_	_	_	_	_	_	_	NER=O
+E           46	ga	_	_	_	_	_	_	_	NER=O
+E           47	je	_	_	_	_	_	_	_	NER=O
+E           48	cenil	_	_	_	_	_	_	_	NER=O
+E           49	Kopitar	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+E           50	)	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           51	,	_	_	_	_	_	_	_	NER=O
+E           52	je	_	_	_	_	_	_	_	NER=O
+E           53	črkarska	_	_	_	_	_	_	_	NER=O
+E           54	pravda	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           55	,	_	_	_	_	_	_	_	NER=O
+E           56	ki	_	_	_	_	_	_	_	NER=O
+E           57	se	_	_	_	_	_	_	_	NER=O
+E           58	je	_	_	_	_	_	_	_	NER=O
+E           59	tedaj	_	_	_	_	_	_	_	NER=O
+E           60	odvijala	_	_	_	_	_	_	_	NER=O
+E           61	in	_	_	_	_	_	_	_	NER=O
+E           62	se	_	_	_	_	_	_	_	NER=O
+E           63	samo	_	_	_	_	_	_	_	NER=O
+E           64	še	_	_	_	_	_	_	_	NER=O
+E           65	poglabljala	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           66	.	_	_	_	_	_	_	_	NER=O
+
+
+
+E
+E           # sent_id = 18.4
+E           # text = Metelčica je bila tako leta 1833 z zakonom prepovedana.
+E         - 1	Metelčica	_	_	_	_	_	_	_	NER=B-PER
+E         ?                               ^^^^^
+E         + 1	Metelčica	_	_	_	_	_	_	_	NER=O
+E         ?                               ^
+E           2	je	_	_	_	_	_	_	_	NER=O
+E           3	bila	_	_	_	_	_	_	_	NER=O
+E           4	tako	_	_	_	_	_	_	_	NER=O
+E           5	leta	_	_	_	_	_	_	_	NER=O
+E           6	1833	_	_	_	_	_	_	_	NER=O
+E           7	z	_	_	_	_	_	_	_	NER=O
+E           8	zakonom	_	_	_	_	_	_	_	NER=O
+E           9	prepovedana	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           10	.	_	_	_	_	_	_	_	NER=O
+
+E           # sent_id = 18.6
+E           # text = Prešeren je v abecedno vojno posegel s pesmimi, kot je denimo Sonet o kaši, iz Kopitarja, s katerim se nista najbolje razumela tudi zaradi zgoraj omenjenih razlik v pojmovanju slovstva, pa se je duhovito ponorčeval tudi s sonetom Apel in čevljar, ki se konča z znamenitim verzom: »Le čevlje sodi naj Kopitar!«
+E           1	Prešeren	_	_	_	_	_	_	_	NER=B-PER
+E           2	je	_	_	_	_	_	_	_	NER=O
+E           3	v	_	_	_	_	_	_	_	NER=O
+E           4	abecedno	_	_	_	_	_	_	_	NER=O
+E           5	vojno	_	_	_	_	_	_	_	NER=O
+E           6	posegel	_	_	_	_	_	_	_	NER=O
+E           7	s	_	_	_	_	_	_	_	NER=O
+E           8	pesmimi	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           9	,	_	_	_	_	_	_	_	NER=O
+E           10	kot	_	_	_	_	_	_	_	NER=O
+E           11	je	_	_	_	_	_	_	_	NER=O
+E           12	denimo	_	_	_	_	_	_	_	NER=O
+E           13	Sonet	_	_	_	_	_	_	_	NER=B-MISC
+E           14	o	_	_	_	_	_	_	_	NER=I-MISC
+E           15	kaši	_	_	_	_	_	_	_	NER=I-MISC|SpaceAfter=No
+E           16	,	_	_	_	_	_	_	_	NER=O
+E           17	iz	_	_	_	_	_	_	_	NER=O
+E           18	Kopitarja	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+E           19	,	_	_	_	_	_	_	_	NER=O
+E           20	s	_	_	_	_	_	_	_	NER=O
+E           21	katerim	_	_	_	_	_	_	_	NER=O
+E           22	se	_	_	_	_	_	_	_	NER=O
+E           23	nista	_	_	_	_	_	_	_	NER=O
+E           24	najbolje	_	_	_	_	_	_	_	NER=O
+E           25	razumela	_	_	_	_	_	_	_	NER=O
+E           26	tudi	_	_	_	_	_	_	_	NER=O
+E           27	zaradi	_	_	_	_	_	_	_	NER=O
+E           28	zgoraj	_	_	_	_	_	_	_	NER=O
+E           29	omenjenih	_	_	_	_	_	_	_	NER=O
+E           30	razlik	_	_	_	_	_	_	_	NER=O
+E           31	v	_	_	_	_	_	_	_	NER=O
+E           32	pojmovanju	_	_	_	_	_	_	_	NER=O
+E           33	slovstva	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           34	,	_	_	_	_	_	_	_	NER=O
+E           35	pa	_	_	_	_	_	_	_	NER=O
+E           36	se	_	_	_	_	_	_	_	NER=O
+E           37	je	_	_	_	_	_	_	_	NER=O
+E           38	duhovito	_	_	_	_	_	_	_	NER=O
+E           39	ponorčeval	_	_	_	_	_	_	_	NER=O
+E           40	tudi	_	_	_	_	_	_	_	NER=O
+E           41	s	_	_	_	_	_	_	_	NER=O
+E           42	sonetom	_	_	_	_	_	_	_	NER=O
+E         - 43	Apel	_	_	_	_	_	_	_	NER=O
+E         ?                           ^
+E         + 43	Apel	_	_	_	_	_	_	_	NER=B-PER
+E         ?                           ^^^^^
+E           44	in	_	_	_	_	_	_	_	NER=O
+E           45	čevljar	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           46	,	_	_	_	_	_	_	_	NER=O
+E           47	ki	_	_	_	_	_	_	_	NER=O
+E           48	se	_	_	_	_	_	_	_	NER=O
+E           49	konča	_	_	_	_	_	_	_	NER=O
+E           50	z	_	_	_	_	_	_	_	NER=O
+E           51	znamenitim	_	_	_	_	_	_	_	NER=O
+E           52	verzom	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           53	:	_	_	_	_	_	_	_	NER=O
+E           54	»	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           55	Le	_	_	_	_	_	_	_	NER=O
+E           56	čevlje	_	_	_	_	_	_	_	NER=O
+E           57	sodi	_	_	_	_	_	_	_	NER=O
+E           58	naj	_	_	_	_	_	_	_	NER=O
+E           59	Kopitar	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+E           60	!	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           61	«	_	_	_	_	_	_	_	NER=O
+E
+
+E
+E           # newpar id = 20
+E           # sent_id = 20.1
+E           # text = Julija Primic
+E         - 1	Julija	_	_	_	_	_	_	_	NER=B-PER
+E         ?                            ^^^^^
+E         + 1	Julija	_	_	_	_	_	_	_	NER=O
+E         ?                            ^
+E         - 2	Primic	_	_	_	_	_	_	_	NER=I-PER
+E         ?                            ^
+E         + 2	Primic	_	_	_	_	_	_	_	NER=B-PER
+E         ?                            ^
+
+
+
+E
+E           # newpar id = 22
+E           # sent_id = 22.1
+E           # text = Leta 1835 je umrl Prešernov stric Jožef, ki ga je vedno podpiral.
+E           1	Leta	_	_	_	_	_	_	_	NER=O
+E           2	1835	_	_	_	_	_	_	_	NER=O
+E           3	je	_	_	_	_	_	_	_	NER=O
+E           4	umrl	_	_	_	_	_	_	_	NER=O
+E         - 5	Prešernov	_	_	_	_	_	_	_	NER=B-DERIV-PER
+E         ?                                 ------
+E         + 5	Prešernov	_	_	_	_	_	_	_	NER=B-PER
+E           6	stric	_	_	_	_	_	_	_	NER=O
+E           7	Jožef	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+E           8	,	_	_	_	_	_	_	_	NER=O
+E           9	ki	_	_	_	_	_	_	_	NER=O
+E           10	ga	_	_	_	_	_	_	_	NER=O
+E           11	je	_	_	_	_	_	_	_	NER=O
+E           12	vedno	_	_	_	_	_	_	_	NER=O
+E           13	podpiral	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           14	.	_	_	_	_	_	_	_	NER=O
+
+
+E
+E           # sent_id = 22.4
+E           # text = Prijatelju je posvetil več pesmi, med drugim tudi pesnitev Krst pri Savici, ki ima pred samim začetkom tudi posvetilni sonet Matiji Čopu.
+E           1	Prijatelju	_	_	_	_	_	_	_	NER=O
+E           2	je	_	_	_	_	_	_	_	NER=O
+E           3	posvetil	_	_	_	_	_	_	_	NER=O
+E           4	več	_	_	_	_	_	_	_	NER=O
+E           5	pesmi	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           6	,	_	_	_	_	_	_	_	NER=O
+E           7	med	_	_	_	_	_	_	_	NER=O
+E           8	drugim	_	_	_	_	_	_	_	NER=O
+E           9	tudi	_	_	_	_	_	_	_	NER=O
+E           10	pesnitev	_	_	_	_	_	_	_	NER=O
+E           11	Krst	_	_	_	_	_	_	_	NER=B-MISC
+E           12	pri	_	_	_	_	_	_	_	NER=I-MISC
+E           13	Savici	_	_	_	_	_	_	_	NER=I-MISC|SpaceAfter=No
+E           14	,	_	_	_	_	_	_	_	NER=O
+E           15	ki	_	_	_	_	_	_	_	NER=O
+E           16	ima	_	_	_	_	_	_	_	NER=O
+E           17	pred	_	_	_	_	_	_	_	NER=O
+E           18	samim	_	_	_	_	_	_	_	NER=O
+E           19	začetkom	_	_	_	_	_	_	_	NER=O
+E           20	tudi	_	_	_	_	_	_	_	NER=O
+E           21	posvetilni	_	_	_	_	_	_	_	NER=O
+E           22	sonet	_	_	_	_	_	_	_	NER=O
+E         - 23	Matiji	_	_	_	_	_	_	_	NER=B-PER
+E         ?                               ^^^
+E         + 23	Matiji	_	_	_	_	_	_	_	NER=B-MISC
+E         ?                               ^^^^
+E         - 24	Čopu	_	_	_	_	_	_	_	NER=I-PER|SpaceAfter=No
+E         ?                             ^^^
+E         + 24	Čopu	_	_	_	_	_	_	_	NER=I-MISC|SpaceAfter=No
+E         ?                             ^^^^
+E           25	.	_	_	_	_	_	_	_	NER=O
+E
+
+
+E           # sent_id = 23.2
+E           # text = Imela sta tri otroke, in sicer: Terezijo (15. oktober 1839 – 14. maj 1840), Ernestino (18. december 1842 – 3. december 1917) in Franca (18. september 1845 – 17. avgust 1855).
+E           1	Imela	_	_	_	_	_	_	_	NER=O
+E           2	sta	_	_	_	_	_	_	_	NER=O
+E           3	tri	_	_	_	_	_	_	_	NER=O
+E           4	otroke	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           5	,	_	_	_	_	_	_	_	NER=O
+E           6	in	_	_	_	_	_	_	_	NER=O
+E           7	sicer	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           8	:	_	_	_	_	_	_	_	NER=O
+E         - 9	Terezijo	_	_	_	_	_	_	_	NER=B-PER
+E         ?                              ^^^^^
+E         + 9	Terezijo	_	_	_	_	_	_	_	NER=O
+E         ?                              ^
+E           10	(	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           11	15.	_	_	_	_	_	_	_	NER=O
+E           12	oktober	_	_	_	_	_	_	_	NER=O
+E           13	1839	_	_	_	_	_	_	_	NER=O
+E           14	–	_	_	_	_	_	_	_	NER=O
+E           15	14.	_	_	_	_	_	_	_	NER=O
+E           16	maj	_	_	_	_	_	_	_	NER=O
+E           17	1840	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           18	)	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           19	,	_	_	_	_	_	_	_	NER=O
+E           20	Ernestino	_	_	_	_	_	_	_	NER=B-PER
+E           21	(	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           22	18.	_	_	_	_	_	_	_	NER=O
+E           23	december	_	_	_	_	_	_	_	NER=O
+E           24	1842	_	_	_	_	_	_	_	NER=O
+E           25	–	_	_	_	_	_	_	_	NER=O
+E           26	3.	_	_	_	_	_	_	_	NER=O
+E           27	december	_	_	_	_	_	_	_	NER=O
+E           28	1917	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           29	)	_	_	_	_	_	_	_	NER=O
+E           30	in	_	_	_	_	_	_	_	NER=O
+E           31	Franca	_	_	_	_	_	_	_	NER=B-PER
+E           32	(	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           33	18.	_	_	_	_	_	_	_	NER=O
+E           34	september	_	_	_	_	_	_	_	NER=O
+E           35	1845	_	_	_	_	_	_	_	NER=O
+E           36	–	_	_	_	_	_	_	_	NER=O
+E           37	17.	_	_	_	_	_	_	_	NER=O
+E           38	avgust	_	_	_	_	_	_	_	NER=O
+E           39	1855	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           40	)	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           41	.	_	_	_	_	_	_	_	NER=O
+E
+
+
+E           # sent_id = 23.4
+E           # text = Hči Ernestina Jelovšek je kasneje napisala Spomine, v katerih je opisala odnos med očetom in materjo.
+E           1	Hči	_	_	_	_	_	_	_	NER=O
+E           2	Ernestina	_	_	_	_	_	_	_	NER=B-PER
+E           3	Jelovšek	_	_	_	_	_	_	_	NER=I-PER
+E           4	je	_	_	_	_	_	_	_	NER=O
+E           5	kasneje	_	_	_	_	_	_	_	NER=O
+E           6	napisala	_	_	_	_	_	_	_	NER=O
+E         - 7	Spomine	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E         ?                             ^
+E         + 7	Spomine	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+E         ?                             ^^^^^
+E           8	,	_	_	_	_	_	_	_	NER=O
+E           9	v	_	_	_	_	_	_	_	NER=O
+E           10	katerih	_	_	_	_	_	_	_	NER=O
+E           11	je	_	_	_	_	_	_	_	NER=O
+E           12	opisala	_	_	_	_	_	_	_	NER=O
+E           13	odnos	_	_	_	_	_	_	_	NER=O
+E           14	med	_	_	_	_	_	_	_	NER=O
+E           15	očetom	_	_	_	_	_	_	_	NER=O
+E           16	in	_	_	_	_	_	_	_	NER=O
+E           17	materjo	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           18	.	_	_	_	_	_	_	_	NER=O
+
+E
+E           # sent_id = 24.3
+E           # text = Korytko je umrl leta 1839.
+E         - 1	Korytko	_	_	_	_	_	_	_	NER=B-PER
+E         ?                             ^^^^^
+E         + 1	Korytko	_	_	_	_	_	_	_	NER=O
+E         ?                             ^
+E           2	je	_	_	_	_	_	_	_	NER=O
+E           3	umrl	_	_	_	_	_	_	_	NER=O
+E           4	leta	_	_	_	_	_	_	_	NER=O
+E           5	1839	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           6	.	_	_	_	_	_	_	_	NER=O
+
+
+
+E
+E           # sent_id = 25.3
+E           # text = Skupaj sta izdajala knjige (na primer pesmi Valentina Vodnika in Ta veseli dan ali Matiček se ženi Antona Tomaža Linharta), načrtovala pa sta tudi nov časopis, katerega objavo je zadrževala cenzura.
+E           1	Skupaj	_	_	_	_	_	_	_	NER=O
+E           2	sta	_	_	_	_	_	_	_	NER=O
+E           3	izdajala	_	_	_	_	_	_	_	NER=O
+E           4	knjige	_	_	_	_	_	_	_	NER=O
+E           5	(	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           6	na	_	_	_	_	_	_	_	NER=O
+E           7	primer	_	_	_	_	_	_	_	NER=O
+E           8	pesmi	_	_	_	_	_	_	_	NER=O
+E           9	Valentina	_	_	_	_	_	_	_	NER=B-PER
+E           10	Vodnika	_	_	_	_	_	_	_	NER=I-PER
+E           11	in	_	_	_	_	_	_	_	NER=O
+E         - 12	Ta	_	_	_	_	_	_	_	NER=O
+E         ?                         ^
+E         + 12	Ta	_	_	_	_	_	_	_	NER=B-MISC
+E         ?                         ^^^^^^
+E         - 13	veseli	_	_	_	_	_	_	_	NER=O
+E         ?                             ^
+E         + 13	veseli	_	_	_	_	_	_	_	NER=I-MISC
+E         ?                             ^^^^^^
+E         - 14	dan	_	_	_	_	_	_	_	NER=O
+E         ?                          ^
+E         + 14	dan	_	_	_	_	_	_	_	NER=I-MISC
+E         ?                          ^^^^^^
+E         - 15	ali	_	_	_	_	_	_	_	NER=O
+E         ?                          ^
+E         + 15	ali	_	_	_	_	_	_	_	NER=I-MISC
+E         ?                          ^^^^^^
+E         - 16	Matiček	_	_	_	_	_	_	_	NER=B-PER
+E         ?                              ^ ^^^
+E         + 16	Matiček	_	_	_	_	_	_	_	NER=I-MISC
+E         ?                              ^ ^^^^
+E           17	se	_	_	_	_	_	_	_	NER=O
+E           18	ženi	_	_	_	_	_	_	_	NER=O
+E           19	Antona	_	_	_	_	_	_	_	NER=B-PER
+E           20	Tomaža	_	_	_	_	_	_	_	NER=I-PER
+E           21	Linharta	_	_	_	_	_	_	_	NER=I-PER|SpaceAfter=No
+E           22	)	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           23	,	_	_	_	_	_	_	_	NER=O
+E           24	načrtovala	_	_	_	_	_	_	_	NER=O
+E           25	pa	_	_	_	_	_	_	_	NER=O
+E           26	sta	_	_	_	_	_	_	_	NER=O
+E           27	tudi	_	_	_	_	_	_	_	NER=O
+E           28	nov	_	_	_	_	_	_	_	NER=O
+E           29	časopis	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           30	,	_	_	_	_	_	_	_	NER=O
+E           31	katerega	_	_	_	_	_	_	_	NER=O
+E           32	objavo	_	_	_	_	_	_	_	NER=O
+E           33	je	_	_	_	_	_	_	_	NER=O
+E           34	zadrževala	_	_	_	_	_	_	_	NER=O
+E           35	cenzura	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           36	.	_	_	_	_	_	_	_	NER=O
+E
+E           # sent_id = 25.4
+E           # text = Smole je umrl leta 1840 na praznovanju svojega godu v Prešernovi prisotnosti.
+E         - 1	Smole	_	_	_	_	_	_	_	NER=B-PER
+E         ?                           ^^^^^
+E         + 1	Smole	_	_	_	_	_	_	_	NER=O
+E         ?                           ^
+E           2	je	_	_	_	_	_	_	_	NER=O
+E           3	umrl	_	_	_	_	_	_	_	NER=O
+E           4	leta	_	_	_	_	_	_	_	NER=O
+E           5	1840	_	_	_	_	_	_	_	NER=O
+E           6	na	_	_	_	_	_	_	_	NER=O
+E           7	praznovanju	_	_	_	_	_	_	_	NER=O
+E           8	svojega	_	_	_	_	_	_	_	NER=O
+E           9	godu	_	_	_	_	_	_	_	NER=O
+E           10	v	_	_	_	_	_	_	_	NER=O
+E         - 11	Prešernovi	_	_	_	_	_	_	_	NER=B-DERIV-PER
+E         ?                                   ^^^^^^^^^
+E         + 11	Prešernovi	_	_	_	_	_	_	_	NER=B-LOC
+E         ?                                   ^^^
+E           12	prisotnosti	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           13	.	_	_	_	_	_	_	_	NER=O
+E
+E           # newpar id = 26
+E           # sent_id = 26.1
+E           # text = Zaradi številnih izgub in neuslišane ljubezni do Primičeve Julije je Prešeren zapadel v krizo.
+E           1	Zaradi	_	_	_	_	_	_	_	NER=O
+E           2	številnih	_	_	_	_	_	_	_	NER=O
+E           3	izgub	_	_	_	_	_	_	_	NER=O
+E           4	in	_	_	_	_	_	_	_	NER=O
+E           5	neuslišane	_	_	_	_	_	_	_	NER=O
+E           6	ljubezni	_	_	_	_	_	_	_	NER=O
+E           7	do	_	_	_	_	_	_	_	NER=O
+E         - 8	Primičeve	_	_	_	_	_	_	_	NER=B-DERIV-PER
+E         ?                                 ------
+E         + 8	Primičeve	_	_	_	_	_	_	_	NER=B-PER
+E         - 9	Julije	_	_	_	_	_	_	_	NER=B-PER
+E         ?                            ^
+E         + 9	Julije	_	_	_	_	_	_	_	NER=I-PER
+E         ?                            ^
+E           10	je	_	_	_	_	_	_	_	NER=O
+E           11	Prešeren	_	_	_	_	_	_	_	NER=B-PER
+E           12	zapadel	_	_	_	_	_	_	_	NER=O
+E           13	v	_	_	_	_	_	_	_	NER=O
+E           14	krizo	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           15	.	_	_	_	_	_	_	_	NER=O
+E
+
+
+E           # newpar id = 28
+E           # sent_id = 28.1
+E           # text = Leta 1843 so začele izhajati Kmetijske in rokodelske novice veterinarja in politika Janeza Bleiweisa, ki so že naznanjale prihod novih časov za Slovence.
+E           1	Leta	_	_	_	_	_	_	_	NER=O
+E           2	1843	_	_	_	_	_	_	_	NER=O
+E           3	so	_	_	_	_	_	_	_	NER=O
+E           4	začele	_	_	_	_	_	_	_	NER=O
+E           5	izhajati	_	_	_	_	_	_	_	NER=O
+E           6	Kmetijske	_	_	_	_	_	_	_	NER=B-ORG
+E           7	in	_	_	_	_	_	_	_	NER=I-ORG
+E           8	rokodelske	_	_	_	_	_	_	_	NER=I-ORG
+E           9	novice	_	_	_	_	_	_	_	NER=I-ORG
+E         - 10	veterinarja	_	_	_	_	_	_	_	NER=O
+E         + 10	veterinarja	_	_	_	_	_	_	_	NER=I-ORG
+E         ?                                  ++ ++
+E           11	in	_	_	_	_	_	_	_	NER=O
+E           12	politika	_	_	_	_	_	_	_	NER=O
+E           13	Janeza	_	_	_	_	_	_	_	NER=B-PER
+E           14	Bleiweisa	_	_	_	_	_	_	_	NER=I-PER|SpaceAfter=No
+E           15	,	_	_	_	_	_	_	_	NER=O
+E           16	ki	_	_	_	_	_	_	_	NER=O
+E           17	so	_	_	_	_	_	_	_	NER=O
+E           18	že	_	_	_	_	_	_	_	NER=O
+E           19	naznanjale	_	_	_	_	_	_	_	NER=O
+E           20	prihod	_	_	_	_	_	_	_	NER=O
+E           21	novih	_	_	_	_	_	_	_	NER=O
+E           22	časov	_	_	_	_	_	_	_	NER=O
+E           23	za	_	_	_	_	_	_	_	NER=O
+E           24	Slovence	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+E           25	.	_	_	_	_	_	_	_	NER=O
+E
+
+
+E
+E           # sent_id = 28.3
+E           # text = Kasneje je Bleiweis vseeno objavil nekatere Prešernove pesmi, vendar na manj vidnih mestih v časopisu.
+E           1	Kasneje	_	_	_	_	_	_	_	NER=O
+E           2	je	_	_	_	_	_	_	_	NER=O
+E           3	Bleiweis	_	_	_	_	_	_	_	NER=B-PER
+E           4	vseeno	_	_	_	_	_	_	_	NER=O
+E           5	objavil	_	_	_	_	_	_	_	NER=O
+E           6	nekatere	_	_	_	_	_	_	_	NER=O
+E         - 7	Prešernove	_	_	_	_	_	_	_	NER=B-DERIV-PER
+E         ?                                  ^^^ ^^^^^
+E         + 7	Prešernove	_	_	_	_	_	_	_	NER=B-MISC
+E         ?                                  ^ ^^
+E         - 8	pesmi	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E         ?                           ^
+E         + 8	pesmi	_	_	_	_	_	_	_	NER=I-MISC|SpaceAfter=No
+E         ?                           ^^^^^^
+E           9	,	_	_	_	_	_	_	_	NER=O
+E           10	vendar	_	_	_	_	_	_	_	NER=O
+E           11	na	_	_	_	_	_	_	_	NER=O
+E           12	manj	_	_	_	_	_	_	_	NER=O
+E           13	vidnih	_	_	_	_	_	_	_	NER=O
+E           14	mestih	_	_	_	_	_	_	_	NER=O
+E           15	v	_	_	_	_	_	_	_	NER=O
+E           16	časopisu	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+E           17	.	_	_	_	_	_	_	_	NER=O
+
+
+E           # newpar id = 29
+E           # sent_id = 29.1
+E           # text = Prva izdaja Poezij
+E           1	Prva	_	_	_	_	_	_	_	NER=O
+E           2	izdaja	_	_	_	_	_	_	_	NER=O
+E         - 3	Poezij	_	_	_	_	_	_	_	NER=B-ORG
+E         ?                              ^^^
+E         + 3	Poezij	_	_	_	_	_	_	_	NER=B-MISC
+E         ?                              ^^^^
+
+
+
+_________________________________ test_parser __________________________________
+
+    def test_parser():
+        nlp = classla.Pipeline(
+            **{'processors': 'tokenize,pos,lemma,depparse', 'dir': TEST_MODELS_DIR, 'lang': 'sl'})
+        doc = nlp(SL_DOC)
+        # with open('test_data/slovenian.parser', 'w') as f:
+        #     f.write(doc.to_conll())
+>       assert SL_DOC_GOLD == doc.to_conll()
+
+
+E           # sent_id = 3.5
+E           # text = Prešeren je prvi Slovenec, ki se je po kakovosti svojega pisanja lahko kosal s sodobniki po Evropi, kjer je tedaj vladala romantična usmeritev.
+E           1	Prešeren	Prešeren	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	4	nsubj	_	_
+E           2	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	4	cop	_	_
+E           3	prvi	prvi	ADJ	Mlomsn	Case=Nom|Gender=Masc|Number=Sing|NumType=Ord	4	amod	_	_
+E           4	Slovenec	Slovenec	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	0	root	_	SpaceAfter=No
+E           5	,	,	PUNCT	Z	_	14	punct	_	_
+E           6	ki	ki	SCONJ	Cs	_	14	mark	_	_
+E           7	se	se	PRON	Px------y	PronType=Prs|Reflex=Yes|Variant=Short	14	expl	_	_
+E           8	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	14	aux	_	_
+E           9	po	po	ADP	Sl	Case=Loc	10	case	_	_
+E           10	kakovosti	kakovost	NOUN	Ncfsl	Case=Loc|Gender=Fem|Number=Sing	14	obl	_	_
+E           11	svojega	svoj	DET	Px-nsg	Case=Gen|Gender=Neut|Number=Sing|Poss=Yes|PronType=Prs|Reflex=Yes	12	det	_	_
+E           12	pisanja	pisanje	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	10	nmod	_	_
+E           13	lahko	lahko	ADV	Rgp	Degree=Pos	14	advmod	_	_
+E           14	kosal	kosati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	4	acl	_	_
+E           15	s	z	ADP	Si	Case=Ins	16	case	_	_
+E           16	sodobniki	sodobnik	NOUN	Ncmpi	Case=Ins|Gender=Masc|Number=Plur	14	obl	_	_
+E           17	po	po	ADP	Sl	Case=Loc	18	case	_	_
+E           18	Evropi	Evropa	PROPN	Npfsl	Case=Loc|Gender=Fem|Number=Sing	16	nmod	_	SpaceAfter=No
+E           19	,	,	PUNCT	Z	_	23	punct	_	_
+E           20	kjer	kjer	SCONJ	Cs	_	23	mark	_	_
+E           21	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	23	aux	_	_
+E           22	tedaj	tedaj	ADV	Rgp	Degree=Pos	23	advmod	_	_
+E         - 23	vladala	vladati	VERB	Vmpp-sf	Aspect=Imp|Gender=Fem|Number=Sing|VerbForm=Part	16	acl	_	_
+E         ?                                                                                  ^
+E         + 23	vladala	vladati	VERB	Vmpp-sf	Aspect=Imp|Gender=Fem|Number=Sing|VerbForm=Part	18	acl	_	_
+E         ?                                                                                  ^
+E           24	romantična	romantičen	ADJ	Agpfsn	Case=Nom|Degree=Pos|Gender=Fem|Number=Sing	25	amod	_	_
+E           25	usmeritev	usmeritev	NOUN	Ncfsn	Case=Nom|Gender=Fem|Number=Sing	23	nsubj	_	SpaceAfter=No
+E           26	.	.	PUNCT	Z	_	4	punct	_	_
+
+E           # sent_id = 4.2
+E           # text = Njegovi prijatelji so umirali eden za drugim, kot pesnik pa v času svojega življenja ni bil priznan.
+E           1	Njegovi	njegov	DET	Ps3mpnsm	Case=Nom|Gender=Masc|Gender[psor]=Masc|Number=Plur|Number[psor]=Sing|Person=3|Poss=Yes|PronType=Prs	2	det	_	_
+E           2	prijatelji	prijatelj	NOUN	Ncmpn	Case=Nom|Gender=Masc|Number=Plur	4	nsubj	_	_
+E           3	so	biti	AUX	Va-r3p-n	Mood=Ind|Number=Plur|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	4	aux	_	_
+E           4	umirali	umirati	VERB	Vmpp-pm	Aspect=Imp|Gender=Masc|Number=Plur|VerbForm=Part	0	root	_	_
+E           5	eden	eden	NUM	Mlpmsn	Case=Nom|Gender=Masc|Number=Sing|NumForm=Word|NumType=Card	4	obl	_	_
+E           6	za	za	ADP	Si	Case=Ins	7	case	_	_
+E         - 7	drugim	drug	ADJ	Mlpnsi	Case=Ins|Gender=Neut|Number=Sing	5	nmod	_	SpaceAfter=No
+E         ?                                                           ^^^^ ^
+E         + 7	drugim	drug	ADJ	Mlpnsi	Case=Ins|Gender=Neut|Number=Sing	4	obl	_	SpaceAfter=No
+E         ?                                                           ^^ ^^
+E           8	,	,	PUNCT	Z	_	18	punct	_	_
+E           9	kot	kot	SCONJ	Cs	_	10	case	_	_
+E           10	pesnik	pesnik	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	18	obl	_	_
+E           11	pa	pa	CCONJ	Cc	_	18	advmod	_	_
+E           12	v	v	ADP	Sl	Case=Loc	13	case	_	_
+E           13	času	čas	NOUN	Ncmsl	Case=Loc|Gender=Masc|Number=Sing	18	obl	_	_
+E           14	svojega	svoj	DET	Px-nsg	Case=Gen|Gender=Neut|Number=Sing|Poss=Yes|PronType=Prs|Reflex=Yes	15	det	_	_
+E           15	življenja	življenje	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	13	nmod	_	_
+E           16	ni	biti	AUX	Va-r3s-y	Mood=Ind|Number=Sing|Person=3|Polarity=Neg|Tense=Pres|VerbForm=Fin	18	aux	_	_
+E           17	bil	biti	AUX	Va-p-sm	Gender=Masc|Number=Sing|VerbForm=Part	18	cop	_	_
+E           18	priznan	priznan	ADJ	Appmsnn	Case=Nom|Definite=Ind|Degree=Pos|Gender=Masc|Number=Sing|VerbForm=Part	4	parataxis	_	SpaceAfter=No
+E           19	.	.	PUNCT	Z	_	4	punct	_	_
+E
+E           # sent_id = 4.3
+E           # text = V zadnjih letih življenja se je vse bolj soočal z malodušjem, težavami z alkoholom, ki je nazadnje povzročil njegovo smrt.
+E           1	V	v	ADP	Sl	Case=Loc	3	case	_	_
+E           2	zadnjih	zadnji	ADJ	Agpnpl	Case=Loc|Degree=Pos|Gender=Neut|Number=Plur	3	amod	_	_
+E           3	letih	leto	NOUN	Ncnpl	Case=Loc|Gender=Neut|Number=Plur	9	obl	_	_
+E           4	življenja	življenje	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	3	nmod	_	_
+E           5	se	se	PRON	Px------y	PronType=Prs|Reflex=Yes|Variant=Short	9	expl	_	_
+E           6	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	9	aux	_	_
+E           7	vse	vse	ADV	Rgp	Degree=Pos	8	advmod	_	_
+E           8	bolj	bolj	ADV	Rgc	Degree=Cmp	9	advmod	_	_
+E           9	soočal	soočati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
+E           10	z	z	ADP	Si	Case=Ins	11	case	_	_
+E           11	malodušjem	malodušje	NOUN	Ncnsi	Case=Ins|Gender=Neut|Number=Sing	9	obl	_	SpaceAfter=No
+E           12	,	,	PUNCT	Z	_	13	punct	_	_
+E           13	težavami	težava	NOUN	Ncfpi	Case=Ins|Gender=Fem|Number=Plur	11	conj	_	_
+E           14	z	z	ADP	Si	Case=Ins	15	case	_	_
+E           15	alkoholom	alkohol	NOUN	Ncmsi	Case=Ins|Gender=Masc|Number=Sing	13	nmod	_	SpaceAfter=No
+E           16	,	,	PUNCT	Z	_	20	punct	_	_
+E           17	ki	ki	SCONJ	Cs	_	20	mark	_	_
+E           18	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	20	aux	_	_
+E           19	nazadnje	nazadnje	ADV	Rgp	Degree=Pos	20	advmod	_	_
+E         - 20	povzročil	povzročiti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	11	acl	_	_
+E         ?                                                                                         ^
+E         + 20	povzročil	povzročiti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	15	acl	_	_
+E         ?                                                                                         ^
+E           21	njegovo	njegov	DET	Ps3fsasm	Case=Acc|Gender=Fem|Gender[psor]=Masc|Number=Sing|Number[psor]=Sing|Person=3|Poss=Yes|PronType=Prs	22	det	_	_
+E           22	smrt	smrt	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	20	obj	_	SpaceAfter=No
+E           23	.	.	PUNCT	Z	_	9	punct	_	_
+
+
+E           # sent_id = 5.2
+E           # text = Del njegove pesmi Zdravljica, napisane leta 1844, je besedilo državne himne Republike Slovenije, obletnica njegove smrti pa osrednji državni kulturni praznik.
+E           1	Del	del	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	11	nsubj	_	_
+E           2	njegove	njegov	DET	Ps3fsgsm	Case=Gen|Gender=Fem|Gender[psor]=Masc|Number=Sing|Number[psor]=Sing|Person=3|Poss=Yes|PronType=Prs	3	det	_	_
+E           3	pesmi	pesem	NOUN	Ncfsg	Case=Gen|Gender=Fem|Number=Sing	1	nmod	_	_
+E           4	Zdravljica	zdravljica	NOUN	Ncfsn	Case=Nom|Gender=Fem|Number=Sing	3	nmod	_	SpaceAfter=No
+E           5	,	,	PUNCT	Z	_	6	punct	_	_
+E           6	napisane	napisan	ADJ	Appfsg	Case=Nom|Degree=Pos|Gender=Fem|Number=Sing|VerbForm=Part	1	amod	_	_
+E         - 7	leta	leto	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	6	obl	_	_
+E         ?                                                            ^^
+E         + 7	leta	leto	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	6	nmod	_	_
+E         ?                                                           ++ ^
+E           8	1844	1844	NUM	Mdc	NumForm=Digit|NumType=Card	7	nummod	_	SpaceAfter=No
+E           9	,	,	PUNCT	Z	_	6	punct	_	_
+E           10	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	11	cop	_	_
+E           11	besedilo	besedilo	NOUN	Ncnsn	Case=Nom|Gender=Neut|Number=Sing	0	root	_	_
+E           12	državne	državen	ADJ	Agpfsg	Case=Gen|Degree=Pos|Gender=Fem|Number=Sing	13	amod	_	_
+E           13	himne	himna	NOUN	Ncfsg	Case=Gen|Gender=Fem|Number=Sing	11	nmod	_	_
+E           14	Republike	republika	NOUN	Ncfsg	Case=Gen|Gender=Fem|Number=Sing	13	nmod	_	_
+E           15	Slovenije	Slovenija	PROPN	Npfsg	Case=Gen|Gender=Fem|Number=Sing	14	nmod	_	SpaceAfter=No
+E           16	,	,	PUNCT	Z	_	24	punct	_	_
+E           17	obletnica	obletnica	NOUN	Ncfsn	Case=Nom|Gender=Fem|Number=Sing	24	nsubj	_	_
+E           18	njegove	njegov	DET	Ps3fsgsm	Case=Gen|Gender=Fem|Gender[psor]=Masc|Number=Sing|Number[psor]=Sing|Person=3|Poss=Yes|PronType=Prs	19	det	_	_
+E           19	smrti	smrt	NOUN	Ncfsg	Case=Gen|Gender=Fem|Number=Sing	17	nmod	_	_
+E           20	pa	pa	CCONJ	Cc	_	24	advmod	_	_
+E           21	osrednji	osrednji	ADJ	Agpmsny	Case=Nom|Definite=Def|Degree=Pos|Gender=Masc|Number=Sing	24	amod	_	_
+E           22	državni	državen	ADJ	Agpmsny	Case=Nom|Definite=Def|Degree=Pos|Gender=Masc|Number=Sing	24	amod	_	_
+E           23	kulturni	kulturen	ADJ	Agpmsny	Case=Nom|Definite=Def|Degree=Pos|Gender=Masc|Number=Sing	24	amod	_	_
+E           24	praznik	praznik	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	11	parataxis	_	SpaceAfter=No
+E           25	.	.	PUNCT	Z	_	11	punct	_	_
+E
+E           # sent_id = 5.3
+E           # text = V manjšem obsegu obeležujemo tudi obletnico njegovega rojstva kot Ta veseli dan kulture.
+E           1	V	v	ADP	Sl	Case=Loc	3	case	_	_
+E           2	manjšem	majhen	ADJ	Agcmsl	Case=Loc|Degree=Cmp|Gender=Masc|Number=Sing	3	amod	_	_
+E           3	obsegu	obseg	NOUN	Ncmsl	Case=Loc|Gender=Masc|Number=Sing	4	obl	_	_
+E           4	obeležujemo	obeleževati	VERB	Vmpr1p	Aspect=Imp|Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin	0	root	_	_
+E         - 5	tudi	tudi	PART	Q	_	6	advmod	_	_
+E         ?                      ^
+E         + 5	tudi	tudi	PART	Q	_	4	advmod	_	_
+E         ?                      ^
+E           6	obletnico	obletnica	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	4	obj	_	_
+E           7	njegovega	njegov	DET	Ps3nsgsm	Case=Gen|Gender=Neut|Gender[psor]=Masc|Number=Sing|Number[psor]=Sing|Person=3|Poss=Yes|PronType=Prs	8	det	_	_
+E           8	rojstva	rojstvo	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	6	nmod	_	_
+E           9	kot	kot	SCONJ	Cs	_	12	case	_	_
+E           10	Ta	ta	DET	Pd-msa	Case=Nom|Gender=Masc|Number=Sing|PronType=Dem	12	det	_	_
+E           11	veseli	vesel	ADJ	Agpmsny	Case=Acc|Definite=Def|Degree=Pos|Gender=Masc|Number=Sing	12	amod	_	_
+E           12	dan	dan	NOUN	Ncmsan	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	4	obl	_	_
+E           13	kulture	kultura	NOUN	Ncfsg	Case=Gen|Gender=Fem|Number=Sing	12	nmod	_	SpaceAfter=No
+E           14	.	.	PUNCT	Z	_	4	punct	_	_
+
+E           # newpar id = 9
+E           # sent_id = 9.1
+E           # text = France Prešeren se je rodil kot tretji otrok in prvi sin materi Mini, rojeni Svetina (pri Muhovcu)[8] v Žirovnici ter očetu Šimnu, po domače Ribčevemu (Hribčevemu), iz Vrbe na Gorenjskem.
+E           1	France	France	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	5	nsubj	_	_
+E           2	Prešeren	Prešeren	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	1	flat:name	_	_
+E           3	se	se	PRON	Px------y	PronType=Prs|Reflex=Yes|Variant=Short	5	expl	_	_
+E           4	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	5	aux	_	_
+E           5	rodil	roditi	VERB	Vmbp-sm	Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
+E           6	kot	kot	SCONJ	Cs	_	8	case	_	_
+E           7	tretji	tretji	ADJ	Mlomsn	Case=Nom|Gender=Masc|Number=Sing|NumType=Ord	8	amod	_	_
+E           8	otrok	otrok	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	5	obl	_	_
+E           9	in	in	CCONJ	Cc	_	11	cc	_	_
+E           10	prvi	prvi	ADJ	Mlomsn	Case=Nom|Gender=Masc|Number=Sing|NumType=Ord	11	amod	_	_
+E           11	sin	sin	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	8	conj	_	_
+E           12	materi	mati	NOUN	Ncfsd	Case=Dat|Gender=Fem|Number=Sing	11	nmod	_	_
+E           13	Mini	Mini	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	12	nmod	_	SpaceAfter=No
+E           14	,	,	PUNCT	Z	_	16	punct	_	_
+E           15	rojeni	rojen	ADJ	Appmsny	Case=Nom|Definite=Def|Degree=Pos|Gender=Masc|Number=Sing|VerbForm=Part	16	amod	_	_
+E           16	Svetina	Svetina	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	11	appos	_	_
+E           17	(	(	PUNCT	Z	_	19	punct	_	SpaceAfter=No
+E           18	pri	pri	ADP	Sl	Case=Loc	19	case	_	_
+E           19	Muhovcu	Muhovec	PROPN	Npmsl	Case=Loc|Gender=Masc|Number=Sing	16	appos	_	SpaceAfter=No
+E           20	)	)	PUNCT	Z	_	19	punct	_	SpaceAfter=No
+E           21	[	[	PUNCT	Z	_	22	punct	_	SpaceAfter=No
+E           22	8	8	NUM	Mdc	NumForm=Digit|NumType=Card	16	nummod	_	SpaceAfter=No
+E         - 23	]	]	PUNCT	Z	_	25	punct	_	_
+E         ?                   ^
+E         + 23	]	]	PUNCT	Z	_	22	punct	_	_
+E         ?                   ^
+E           24	v	v	ADP	Sl	Case=Loc	25	case	_	_
+E         - 25	Žirovnici	Žirovnica	PROPN	Npfsl	Case=Loc|Gender=Fem|Number=Sing	22	orphan	_	_
+E         ?                                                                    ^^
+E         + 25	Žirovnici	Žirovnica	PROPN	Npfsl	Case=Loc|Gender=Fem|Number=Sing	16	orphan	_	_
+E         ?                                                                    ^^
+E           26	ter	ter	CCONJ	Cc	_	27	cc	_	_
+E           27	očetu	oče	NOUN	Ncmsl	Case=Loc|Gender=Masc|Number=Sing	12	conj	_	_
+E           28	Šimnu	Šimn	PROPN	Npmsl	Case=Loc|Gender=Masc|Number=Sing	27	nmod	_	SpaceAfter=No
+E           29	,	,	PUNCT	Z	_	32	punct	_	_
+E           30	po	po	ADP	Sl	Case=Loc	32	case	_	_
+E           31	domače	domač	ADJ	Agpnsa	Case=Acc|Degree=Pos|Gender=Fem|Number=Sing	32	amod	_	_
+E         - 32	Ribčevemu	Ribčev	ADJ	Aspmsl	Case=Loc|Degree=Pos|Gender=Masc|Number=Sing|Poss=Yes	27	nmod	_	_
+E         ?                                                                                        ^
+E         + 32	Ribčevemu	Ribčev	ADJ	Aspmsl	Case=Loc|Degree=Pos|Gender=Masc|Number=Sing|Poss=Yes	27	amod	_	_
+E         ?                                                                                        ^
+E           33	(	(	PUNCT	Z	_	34	punct	_	SpaceAfter=No
+E           34	Hribčevemu	Hribčev	ADJ	Aspmsd	Case=Loc|Degree=Pos|Gender=Masc|Number=Sing|Poss=Yes	32	appos	_	SpaceAfter=No
+E           35	)	)	PUNCT	Z	_	34	punct	_	SpaceAfter=No
+E           36	,	,	PUNCT	Z	_	38	punct	_	_
+E           37	iz	iz	ADP	Sg	Case=Gen	38	case	_	_
+E           38	Vrbe	Vrba	PROPN	Npfsg	Case=Gen|Gender=Fem|Number=Sing	32	conj	_	_
+E           39	na	na	ADP	Sl	Case=Loc	40	case	_	_
+E           40	Gorenjskem	Gorenjsko	PROPN	Npnsl	Case=Loc|Gender=Neut|Number=Sing	38	nmod	_	SpaceAfter=No
+E           41	.	.	PUNCT	Z	_	5	punct	_	_
+E
+E           # sent_id = 9.2
+E           # text = Že zelo zgodaj je kazal izjemno nadarjenost, zato so ga leta 1808 poslali k stricu Jožefu, ki je kot duhovnik služboval na Kopanju pri Veliki Račni.
+E         - 1	Že	že	PART	Q	_	3	advmod	_	_
+E         ?                  ^
+E         + 1	Že	že	PART	Q	_	5	advmod	_	_
+E         ?                  ^
+E           2	zelo	zelo	ADV	Rgp	Degree=Pos	3	advmod	_	_
+E           3	zgodaj	zgodaj	ADV	Rgp	Degree=Pos	5	advmod	_	_
+E           4	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	5	aux	_	_
+E           5	kazal	kazati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
+E           6	izjemno	izjemen	ADJ	Agpfsa	Case=Acc|Degree=Pos|Gender=Fem|Number=Sing	7	amod	_	_
+E           7	nadarjenost	nadarjenost	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	5	obj	_	SpaceAfter=No
+E           8	,	,	PUNCT	Z	_	14	punct	_	_
+E           9	zato	zato	CCONJ	Cc	_	14	cc	_	_
+E           10	so	biti	AUX	Va-r3p-n	Mood=Ind|Number=Plur|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	14	aux	_	_
+E           11	ga	on	PRON	Pp3msa--y	Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	14	obj	_	_
+E           12	leta	leto	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	14	obl	_	_
+E           13	1808	1808	NUM	Mdc	NumForm=Digit|NumType=Card	12	nummod	_	_
+E           14	poslali	poslati	VERB	Vmep-pm	Aspect=Perf|Gender=Masc|Number=Plur|VerbForm=Part	5	conj	_	_
+E           15	k	k	ADP	Sd	Case=Dat	16	case	_	_
+E           16	stricu	stric	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	14	obl	_	_
+E           17	Jožefu	Jožef	PROPN	Npmsd	Case=Dat|Gender=Masc|Number=Sing	16	nmod	_	SpaceAfter=No
+E           18	,	,	PUNCT	Z	_	23	punct	_	_
+E           19	ki	ki	SCONJ	Cs	_	23	mark	_	_
+E           20	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	23	aux	_	_
+E           21	kot	kot	SCONJ	Cs	_	22	case	_	_
+E           22	duhovnik	duhovnik	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	23	obl	_	_
+E           23	služboval	službovati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	16	acl	_	_
+E           24	na	na	ADP	Sl	Case=Loc	25	case	_	_
+E           25	Kopanju	kopanje	NOUN	Ncnsl	Case=Loc|Gender=Neut|Number=Sing	23	obl	_	_
+E           26	pri	pri	ADP	Sl	Case=Loc	28	case	_	_
+E           27	Veliki	velik	ADJ	Agpfsl	Case=Loc|Degree=Pos|Gender=Fem|Number=Sing	28	amod	_	_
+E           28	Račni	Račna	PROPN	Npfsl	Case=Loc|Gender=Fem|Number=Sing	25	nmod	_	SpaceAfter=No
+E           29	.	.	PUNCT	Z	_	5	punct	_	_
+
+E           # sent_id = 10.3
+E           # text = Po končani gimnaziji je v Ljubljani zaključil še dva letnika tedanje »filozofije« in leta 1821 odpotoval na Dunaj, kjer je končal še tretji letnik, ki ga je moral izdelati za nadaljevanje študija.
+E           1	Po	po	ADP	Sl	Case=Loc	3	case	_	_
+E           2	končani	končan	ADJ	Appfsl	Case=Loc|Degree=Pos|Gender=Fem|Number=Sing|VerbForm=Part	3	amod	_	_
+E           3	gimnaziji	gimnazija	NOUN	Ncfsl	Case=Loc|Gender=Fem|Number=Sing	7	obl	_	_
+E           4	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	7	aux	_	_
+E           5	v	v	ADP	Sl	Case=Loc	6	case	_	_
+E           6	Ljubljani	Ljubljana	PROPN	Npfsl	Case=Loc|Gender=Fem|Number=Sing	7	obl	_	_
+E           7	zaključil	zaključiti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
+E         - 8	še	še	PART	Q	_	10	advmod	_	_
+E         ?                  ^^
+E         + 8	še	še	PART	Q	_	7	advmod	_	_
+E         ?                  ^
+E           9	dva	dva	NUM	Mlcmda	Case=Acc|Gender=Masc|Number=Dual|NumForm=Word|NumType=Card	10	nummod	_	_
+E           10	letnika	letnik	NOUN	Ncmda	Case=Acc|Gender=Masc|Number=Dual	7	obj	_	_
+E           11	tedanje	tedanji	ADJ	Agpfsg	Case=Gen|Degree=Pos|Gender=Fem|Number=Sing	13	amod	_	_
+E           12	»	»	PUNCT	Z	_	13	punct	_	SpaceAfter=No
+E           13	filozofije	filozofija	NOUN	Ncfsg	Case=Gen|Gender=Fem|Number=Sing	10	nmod	_	SpaceAfter=No
+E           14	«	«	PUNCT	Z	_	13	punct	_	_
+E           15	in	in	CCONJ	Cc	_	18	cc	_	_
+E           16	leta	leto	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	18	obl	_	_
+E           17	1821	1821	NUM	Mdc	NumForm=Digit|NumType=Card	16	nummod	_	_
+E           18	odpotoval	odpotovati	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	7	conj	_	_
+E           19	na	na	ADP	Sa	Case=Acc	20	case	_	_
+E           20	Dunaj	Dunaj	PROPN	Npmsan	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	18	obl	_	SpaceAfter=No
+E           21	,	,	PUNCT	Z	_	24	punct	_	_
+E           22	kjer	kjer	SCONJ	Cs	_	24	mark	_	_
+E           23	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	24	aux	_	_
+E           24	končal	končati	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	20	acl	_	_
+E         - 25	še	še	PART	Q	_	27	advmod	_	_
+E         ?                    ^
+E         + 25	še	še	PART	Q	_	24	advmod	_	_
+E         ?                    ^
+E           26	tretji	tretji	ADJ	Mlomsa	Case=Acc|Gender=Masc|Number=Sing|NumType=Ord	27	amod	_	_
+E           27	letnik	letnik	NOUN	Ncmsan	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	24	obj	_	SpaceAfter=No
+E           28	,	,	PUNCT	Z	_	32	punct	_	_
+E           29	ki	ki	SCONJ	Cs	_	32	mark	_	_
+E           30	ga	on	PRON	Pp3msa--y	Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	33	obj	_	_
+E           31	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	32	aux	_	_
+E           32	moral	morati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	27	acl	_	_
+E           33	izdelati	izdelati	VERB	Vmen	Aspect=Perf|VerbForm=Inf	32	xcomp	_	_
+E           34	za	za	ADP	Sa	Case=Acc	35	case	_	_
+E           35	nadaljevanje	nadaljevanje	NOUN	Ncnsa	Case=Acc|Gender=Neut|Number=Sing	33	obl	_	_
+E           36	študija	študij	NOUN	Ncmsg	Case=Gen|Gender=Masc|Number=Sing	35	nmod	_	SpaceAfter=No
+E           37	.	.	PUNCT	Z	_	7	punct	_	_
+
+
+
+E           # sent_id = 12.4
+E           # text = Kljub temu mu je uspelo shajati, saj je bil od leta 1822 Knafljev štipendist, še vedno mu je pomagal stric Jožef, denar pa si je služil tudi kot domači učitelj v Klinkowströmovemu zavodu za katoliško mladino.
+E           1	Kljub	kljub	ADP	Sd	Case=Dat	2	case	_	_
+E           2	temu	ta	DET	Pd-nsd	Case=Dat|Gender=Neut|Number=Sing|PronType=Dem	6	obl	_	_
+E           3	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	5	obj	_	_
+E           4	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	5	aux	_	_
+E           5	uspelo	uspeti	VERB	Vmep-sn	Aspect=Perf|Gender=Neut|Number=Sing|VerbForm=Part	0	root	_	_
+E           6	shajati	shajati	VERB	Vmpn	Aspect=Imp|VerbForm=Inf	5	xcomp	_	SpaceAfter=No
+E           7	,	,	PUNCT	Z	_	15	punct	_	_
+E           8	saj	saj	CCONJ	Cc	_	15	cc	_	_
+E           9	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	15	aux	_	_
+E           10	bil	biti	AUX	Va-p-sm	Gender=Masc|Number=Sing|VerbForm=Part	15	cop	_	_
+E           11	od	od	ADP	Sg	Case=Gen	12	case	_	_
+E           12	leta	leto	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	15	obl	_	_
+E           13	1822	1822	NUM	Mdc	NumForm=Digit|NumType=Card	12	nummod	_	_
+E           14	Knafljev	Knafljev	ADJ	Aspmsnn	Case=Nom|Definite=Ind|Degree=Pos|Gender=Masc|Number=Sing|Poss=Yes	15	amod	_	_
+E           15	štipendist	štipendist	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	5	conj	_	SpaceAfter=No
+E           16	,	,	PUNCT	Z	_	21	punct	_	_
+E           17	še	še	PART	Q	_	18	advmod	_	_
+E           18	vedno	vedno	ADV	Rgp	Degree=Pos	21	advmod	_	_
+E         - 19	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	21	iobj	_	_
+E         ?                                                                                                 -
+E         + 19	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	21	obj	_	_
+E           20	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	21	aux	_	_
+E           21	pomagal	pomagati	VERB	Vmbp-sm	Gender=Masc|Number=Sing|VerbForm=Part	5	parataxis	_	_
+E           22	stric	stric	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	21	nsubj	_	_
+E           23	Jožef	Jožef	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	22	nmod	_	SpaceAfter=No
+E           24	,	,	PUNCT	Z	_	29	punct	_	_
+E           25	denar	denar	NOUN	Ncmsan	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	29	obj	_	_
+E           26	pa	pa	CCONJ	Cc	_	29	advmod	_	_
+E           27	si	se	PRON	Px---d--y	Case=Dat|PronType=Prs|Reflex=Yes|Variant=Short	29	expl	_	_
+E           28	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	29	aux	_	_
+E           29	služil	služiti	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	5	parataxis	_	_
+E         - 30	tudi	tudi	PART	Q	_	33	advmod	_	_
+E         ?                       ^^
+E         + 30	tudi	tudi	PART	Q	_	29	advmod	_	_
+E         ?                       ^^
+E           31	kot	kot	SCONJ	Cs	_	33	case	_	_
+E           32	domači	domač	ADJ	Agpmsny	Case=Nom|Definite=Def|Degree=Pos|Gender=Masc|Number=Sing	33	amod	_	_
+E           33	učitelj	učitelj	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	29	obl	_	_
+E           34	v	v	ADP	Sl	Case=Loc	36	case	_	_
+E           35	Klinkowströmovemu	Klinkowströmov	ADJ	Aspmsl	Case=Loc|Degree=Pos|Gender=Masc|Number=Sing|Poss=Yes	36	amod	_	_
+E           36	zavodu	zavod	NOUN	Ncmsl	Case=Loc|Gender=Masc|Number=Sing	33	nmod	_	_
+E           37	za	za	ADP	Sa	Case=Acc	39	case	_	_
+E           38	katoliško	katoliški	ADJ	Agpfsa	Case=Acc|Degree=Pos|Gender=Fem|Number=Sing	39	amod	_	_
+E           39	mladino	mladina	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	36	nmod	_	SpaceAfter=No
+E           40	.	.	PUNCT	Z	_	5	punct	_	_
+E
+E           # sent_id = 12.5
+E           # text = To službo je moral zaradi svoje svobodomiselnosti in ker je gojencu, kasnejšemu pesniku in politiku Anastaziju Grünu (pravo ime Anton Alexander von Auersperg) - grofu Auerspergu, posojal prepovedane knjige, zapustiti.
+E           1	To	ta	DET	Pd-fsa	Case=Acc|Gender=Fem|Number=Sing|PronType=Dem	2	det	_	_
+E         - 2	službo	služba	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	35	obj	_	_
+E         ?                                                            ^^
+E         + 2	službo	služba	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	4	obj	_	_
+E         ?                                                            ^
+E           3	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	4	aux	_	_
+E           4	moral	morati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
+E           5	zaradi	zaradi	ADP	Sg	Case=Gen	7	case	_	_
+E           6	svoje	svoj	DET	Px-fsg	Case=Gen|Gender=Fem|Number=Sing|Poss=Yes|PronType=Prs|Reflex=Yes	7	det	_	_
+E           7	svobodomiselnosti	svobodomiselnost	NOUN	Ncfsg	Case=Gen|Gender=Fem|Number=Sing	4	obl	_	_
+E           8	in	in	CCONJ	Cc	_	31	cc	_	_
+E           9	ker	ker	SCONJ	Cs	_	31	mark	_	_
+E           10	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	31	aux	_	_
+E         - 11	gojencu	gojenec	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	35	iobj	_	SpaceAfter=No
+E         ?                                                                   -
+E         + 11	gojencu	gojenec	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	35	obj	_	SpaceAfter=No
+E           12	,	,	PUNCT	Z	_	14	punct	_	_
+E           13	kasnejšemu	kasen	ADJ	Agcmsd	Case=Dat|Degree=Cmp|Gender=Masc|Number=Sing	14	amod	_	_
+E           14	pesniku	pesnik	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	11	appos	_	_
+E           15	in	in	CCONJ	Cc	_	16	cc	_	_
+E           16	politiku	politik	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	14	conj	_	_
+E         - 17	Anastaziju	Anastazij	PROPN	Npmsd	Case=Dat|Gender=Masc|Number=Sing	14	nmod	_	_
+E         ?                                                                       ^
+E         + 17	Anastaziju	Anastazij	PROPN	Npmsd	Case=Dat|Gender=Masc|Number=Sing	16	nmod	_	_
+E         ?                                                                       ^
+E           18	Grünu	Grün	PROPN	Npmsd	Case=Dat|Gender=Masc|Number=Sing	17	flat:name	_	_
+E           19	(	(	PUNCT	Z	_	21	punct	_	SpaceAfter=No
+E           20	pravo	pravi	ADJ	Agpnsn	Case=Nom|Degree=Pos|Gender=Neut|Number=Sing	21	amod	_	_
+E         - 21	ime	ime	NOUN	Ncnsn	Case=Nom|Gender=Neut|Number=Sing	14	appos	_	_
+E         ?                                                         ^
+E         + 21	ime	ime	NOUN	Ncnsn	Case=Nom|Gender=Neut|Number=Sing	16	appos	_	_
+E         ?                                                         ^
+E           22	Anton	Anton	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	21	nmod	_	_
+E           23	Alexander	Alexander	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	22	flat:name	_	_
+E           24	von	von	X	Xf	Foreign=Yes	22	flat:name	_	_
+E           25	Auersperg	Auersperg	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	22	flat:name	_	SpaceAfter=No
+E           26	)	)	PUNCT	Z	_	21	punct	_	_
+E         - 27	-	-	PUNCT	Z	_	21	punct	_	_
+E         ?                   ^
+E         + 27	-	-	PUNCT	Z	_	28	punct	_	_
+E         ?                   ^
+E           28	grofu	grof	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	31	iobj	_	_
+E           29	Auerspergu	Auersperg	PROPN	Npmsd	Case=Dat|Gender=Masc|Number=Sing	28	nmod	_	SpaceAfter=No
+E         - 30	,	,	PUNCT	Z	_	21	punct	_	_
+E         ?                   ^
+E         + 30	,	,	PUNCT	Z	_	28	punct	_	_
+E         ?                   ^
+E           31	posojal	posojati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	4	advcl	_	_
+E           32	prepovedane	prepovedan	ADJ	Appfpa	Case=Acc|Degree=Pos|Gender=Fem|Number=Plur|VerbForm=Part	33	amod	_	_
+E         - 33	knjige	knjiga	NOUN	Ncfpa	Case=Acc|Gender=Fem|Number=Plur	31	obj	_	SpaceAfter=No
+E         ?                                                              ^
+E         + 33	knjige	knjiga	NOUN	Ncfpa	Case=Acc|Gender=Fem|Number=Plur	35	obj	_	SpaceAfter=No
+E         ?                                                              ^
+E           34	,	,	PUNCT	Z	_	31	punct	_	_
+E           35	zapustiti	zapustiti	VERB	Vmen	Aspect=Perf|VerbForm=Inf	31	xcomp	_	SpaceAfter=No
+E           36	.	.	PUNCT	Z	_	4	punct	_	_
+
+
+E           # sent_id = 15.2
+E           # text = Naslednjega leta je sprejel še neplačano delovno mesto pri državnem uradu.
+E           1	Naslednjega	naslednji	ADJ	Agpnsg	Case=Gen|Degree=Pos|Gender=Neut|Number=Sing	2	amod	_	_
+E           2	leta	leto	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	4	obl	_	_
+E           3	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	4	aux	_	_
+E           4	sprejel	sprejeti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
+E         - 5	še	še	PART	Q	_	8	advmod	_	_
+E         ?                  ^
+E         + 5	še	še	PART	Q	_	4	advmod	_	_
+E         ?                  ^
+E           6	neplačano	neplačan	ADJ	Agpnsa	Case=Acc|Degree=Pos|Gender=Neut|Number=Sing	8	amod	_	_
+E           7	delovno	deloven	ADJ	Agpnsa	Case=Acc|Degree=Pos|Gender=Neut|Number=Sing	8	amod	_	_
+E           8	mesto	mesto	NOUN	Ncnsa	Case=Acc|Gender=Neut|Number=Sing	4	obj	_	_
+E           9	pri	pri	ADP	Sl	Case=Loc	11	case	_	_
+E           10	državnem	državen	ADJ	Agpmsl	Case=Loc|Degree=Pos|Gender=Masc|Number=Sing	11	amod	_	_
+E           11	uradu	urad	NOUN	Ncmsl	Case=Loc|Gender=Masc|Number=Sing	8	nmod	_	SpaceAfter=No
+E           12	.	.	PUNCT	Z	_	4	punct	_	_
+E
+E           # newpar id = 16
+E           # sent_id = 16.1
+E           # text = V Ljubljani se je Prešeren spoprijateljil s profesorjem in knjižničarjem Matijem Čopom, rojakom iz Žirovnice, ki je dobro poznal tedanjo romantično književnost in miselnost ter govoril 19 jezikov.
+E           1	V	v	ADP	Sl	Case=Loc	2	case	_	_
+E           2	Ljubljani	Ljubljana	PROPN	Npfsl	Case=Loc|Gender=Fem|Number=Sing	6	obl	_	_
+E           3	se	se	PRON	Px------y	PronType=Prs|Reflex=Yes|Variant=Short	6	expl	_	_
+E           4	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	6	aux	_	_
+E           5	Prešeren	Prešeren	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	6	nsubj	_	_
+E           6	spoprijateljil	spoprijateljiti	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
+E           7	s	z	ADP	Si	Case=Ins	8	case	_	_
+E           8	profesorjem	profesor	NOUN	Ncmsi	Case=Ins|Gender=Masc|Number=Sing	6	obl	_	_
+E           9	in	in	CCONJ	Cc	_	10	cc	_	_
+E           10	knjižničarjem	knjižničar	NOUN	Ncmsi	Case=Ins|Gender=Masc|Number=Sing	8	conj	_	_
+E           11	Matijem	Matija	PROPN	Npmsi	Case=Ins|Gender=Masc|Number=Sing	10	nmod	_	_
+E           12	Čopom	Čop	PROPN	Npmsi	Case=Ins|Gender=Masc|Number=Sing	11	flat:name	_	SpaceAfter=No
+E           13	,	,	PUNCT	Z	_	14	punct	_	_
+E         - 14	rojakom	rojak	NOUN	Ncmsi	Case=Ins|Gender=Masc|Number=Sing	8	appos	_	_
+E         ?                                                                ^^^ ^
+E         + 14	rojakom	rojak	NOUN	Ncmsi	Case=Ins|Gender=Masc|Number=Sing	8	conj	_	_
+E         ?                                                                ^ ^^
+E           15	iz	iz	ADP	Sg	Case=Gen	16	case	_	_
+E           16	Žirovnice	Žirovnica	PROPN	Npfsg	Case=Gen|Gender=Fem|Number=Sing	14	nmod	_	SpaceAfter=No
+E           17	,	,	PUNCT	Z	_	21	punct	_	_
+E           18	ki	ki	SCONJ	Cs	_	21	mark	_	_
+E           19	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	21	aux	_	_
+E           20	dobro	dobro	ADV	Rgp	Degree=Pos	21	advmod	_	_
+E           21	poznal	poznati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	14	acl	_	_
+E           22	tedanjo	tedanji	ADJ	Agpfsa	Case=Acc|Degree=Pos|Gender=Fem|Number=Sing	24	amod	_	_
+E           23	romantično	romantičen	ADJ	Agpfsa	Case=Acc|Degree=Pos|Gender=Fem|Number=Sing	24	amod	_	_
+E           24	književnost	književnost	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	21	obj	_	_
+E           25	in	in	CCONJ	Cc	_	26	cc	_	_
+E           26	miselnost	miselnost	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	24	conj	_	_
+E           27	ter	ter	CCONJ	Cc	_	28	cc	_	_
+E           28	govoril	govoriti	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	21	conj	_	_
+E           29	19	19	NUM	Mdc	NumForm=Digit|NumType=Card	30	nummod	_	_
+E           30	jezikov	jezik	NOUN	Ncmpg	Case=Gen|Gender=Masc|Number=Plur	28	obj	_	SpaceAfter=No
+E           31	.	.	PUNCT	Z	_	6	punct	_	_
+
+
+E           # sent_id = 17.2
+E           # text = Čbelica je izšla petkrat, in sicer leta 1830, 1831, 1832, 1834 in 1848.
+E           1	Čbelica	Čbelica	PROPN	Npfsn	Case=Nom|Gender=Fem|Number=Sing	3	nsubj	_	_
+E           2	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	3	aux	_	_
+E           3	izšla	iziti	VERB	Vmep-sf	Aspect=Perf|Gender=Fem|Number=Sing|VerbForm=Part	0	root	_	_
+E           4	petkrat	petkrat	ADV	Rgp	Degree=Pos	3	advmod	_	SpaceAfter=No
+E           5	,	,	PUNCT	Z	_	8	punct	_	_
+E           6	in	in	CCONJ	Cc	_	8	cc	_	_
+E           7	sicer	sicer	CCONJ	Cc	_	6	fixed	_	_
+E           8	leta	leto	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	3	conj	_	_
+E           9	1830	1830	NUM	Mdc	NumForm=Digit|NumType=Card	8	nummod	_	SpaceAfter=No
+E           10	,	,	PUNCT	Z	_	11	punct	_	_
+E         - 11	1831	1831	NUM	Mdc	NumForm=Digit|NumType=Card	9	conj	_	SpaceAfter=No
+E         ?                                                 ^^^ ^^
+E         + 11	1831	1831	NUM	Mdc	NumForm=Digit|NumType=Card	8	nummod	_	SpaceAfter=No
+E         ?                                                 ^^^^^^ ^
+E           12	,	,	PUNCT	Z	_	13	punct	_	_
+E         - 13	1832	1832	NUM	Mdc	NumForm=Digit|NumType=Card	9	conj	_	SpaceAfter=No
+E         ?                                                 ^
+E         + 13	1832	1832	NUM	Mdc	NumForm=Digit|NumType=Card	11	conj	_	SpaceAfter=No
+E         ?                                                 ^^
+E           14	,	,	PUNCT	Z	_	15	punct	_	_
+E           15	1834	1834	NUM	Mdc	NumForm=Digit|NumType=Card	9	conj	_	_
+E           16	in	in	CCONJ	Cc	_	17	cc	_	_
+E           17	1848	1848	NUM	Mdc	NumForm=Digit|NumType=Card	9	conj	_	SpaceAfter=No
+E           18	.	.	PUNCT	Z	_	3	punct	_	_
+
+
+
+test_parser.py:24: AssertionError
+------------------------------ Captured log call -------------------------------
+INFO     classla:core.py:89 Loading these models for language: sl (Slovenian):
+========================
+| Processor | Package  |
+------------------------
+| tokenize  | standard |
+| pos       | standard |
+| lemma     | standard |
+| depparse  | standard |
+========================
+
+INFO     classla:core.py:100 Use device: gpu
+INFO     classla:core.py:106 Loading: tokenize
+INFO     classla:core.py:106 Loading: pos
+INFO     classla:core.py:106 Loading: lemma
+INFO     classla:core.py:106 Loading: depparse
+INFO     classla:core.py:128 Done loading processors!
+=========================== short test summary info ============================
+FAILED test_ner.py::test_ner - AssertionError: assert '# newpar id = 1\n# sen...
+FAILED test_parser.py::test_parser - AssertionError: assert '# newpar id = 1\...
+=================== 2 failed, 31 passed in 799.20s (0:13:19) ===================
