@@ -36,7 +36,7 @@ dependencies = [
     'numpy',
     'protobuf==4.21.2',
     'requests==2.28.0',
-    'torch<=2.5.1',
+    'torch<=2.6',
     'tqdm',
     'obeliks==1.1.6',
     'reldi-tokeniser==1.0.3',
@@ -53,4 +53,4 @@ path = "classla/_version.py"
 packages = ["classla"]
 
 [project.optional-dependencies]
-dev = ["pytest>=6.0", "twine>=6.1.0"]
+dev = ["pytest>=6.0", "twine>=4.0.2", "build"]
