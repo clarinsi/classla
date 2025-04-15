@@ -133,7 +133,7 @@
 20	kjer	kjer	SCONJ	Cs	_	23	mark	_	_
 21	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	23	aux	_	_
 22	tedaj	tedaj	ADV	Rgp	Degree=Pos	23	advmod	_	_
-23	vladala	vladati	VERB	Vmpp-sf	Aspect=Imp|Gender=Fem|Number=Sing|VerbForm=Part	18	acl	_	_
+23	vladala	vladati	VERB	Vmpp-sf	Aspect=Imp|Gender=Fem|Number=Sing|VerbForm=Part	16	acl	_	_
 24	romantična	romantičen	ADJ	Agpfsn	Case=Nom|Degree=Pos|Gender=Fem|Number=Sing	25	amod	_	_
 25	usmeritev	usmeritev	NOUN	Ncfsn	Case=Nom|Gender=Fem|Number=Sing	23	nsubj	_	SpaceAfter=No
 26	.	.	PUNCT	Z	_	4	punct	_	_
@@ -182,7 +182,7 @@
 4	umirali	umirati	VERB	Vmpp-pm	Aspect=Imp|Gender=Masc|Number=Plur|VerbForm=Part	0	root	_	_
 5	eden	eden	NUM	Mlpmsn	Case=Nom|Gender=Masc|Number=Sing|NumForm=Word|NumType=Card	4	obl	_	_
 6	za	za	ADP	Si	Case=Ins	7	case	_	_
-7	drugim	drug	ADJ	Mlpnsi	Case=Ins|Gender=Neut|Number=Sing	4	obl	_	SpaceAfter=No
+7	drugim	drug	ADJ	Mlpnsi	Case=Ins|Gender=Neut|Number=Sing	5	nmod	_	SpaceAfter=No
 8	,	,	PUNCT	Z	_	18	punct	_	_
 9	kot	kot	SCONJ	Cs	_	10	case	_	_
 10	pesnik	pesnik	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	18	obl	_	_
@@ -217,7 +217,7 @@
 17	ki	ki	SCONJ	Cs	_	20	mark	_	_
 18	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	20	aux	_	_
 19	nazadnje	nazadnje	ADV	Rgp	Degree=Pos	20	advmod	_	_
-20	povzročil	povzročiti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	15	acl	_	_
+20	povzročil	povzročiti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	11	acl	_	_
 21	njegovo	njegov	DET	Ps3fsasm	Case=Acc|Gender=Fem|Gender[psor]=Masc|Number=Sing|Number[psor]=Sing|Person=3|Poss=Yes|PronType=Prs	22	det	_	_
 22	smrt	smrt	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	20	obj	_	SpaceAfter=No
 23	.	.	PUNCT	Z	_	9	punct	_	_
@@ -243,7 +243,7 @@
 4	Zdravljica	zdravljica	NOUN	Ncfsn	Case=Nom|Gender=Fem|Number=Sing	3	nmod	_	SpaceAfter=No
 5	,	,	PUNCT	Z	_	6	punct	_	_
 6	napisane	napisan	ADJ	Appfsg	Case=Nom|Degree=Pos|Gender=Fem|Number=Sing|VerbForm=Part	1	amod	_	_
-7	leta	leto	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	6	nmod	_	_
+7	leta	leto	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	6	obl	_	_
 8	1844	1844	NUM	Mdc	NumForm=Digit|NumType=Card	7	nummod	_	SpaceAfter=No
 9	,	,	PUNCT	Z	_	6	punct	_	_
 10	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	11	cop	_	_
@@ -269,7 +269,7 @@
 2	manjšem	majhen	ADJ	Agcmsl	Case=Loc|Degree=Cmp|Gender=Masc|Number=Sing	3	amod	_	_
 3	obsegu	obseg	NOUN	Ncmsl	Case=Loc|Gender=Masc|Number=Sing	4	obl	_	_
 4	obeležujemo	obeleževati	VERB	Vmpr1p	Aspect=Imp|Mood=Ind|Number=Plur|Person=1|Tense=Pres|VerbForm=Fin	0	root	_	_
-5	tudi	tudi	PART	Q	_	4	advmod	_	_
+5	tudi	tudi	PART	Q	_	6	advmod	_	_
 6	obletnico	obletnica	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	4	obj	_	_
 7	njegovega	njegov	DET	Ps3nsgsm	Case=Gen|Gender=Neut|Gender[psor]=Masc|Number=Sing|Number[psor]=Sing|Person=3|Poss=Yes|PronType=Prs	8	det	_	_
 8	rojstva	rojstvo	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	6	nmod	_	_
@@ -332,16 +332,16 @@
 20	)	)	PUNCT	Z	_	19	punct	_	SpaceAfter=No
 21	[	[	PUNCT	Z	_	22	punct	_	SpaceAfter=No
 22	8	8	NUM	Mdc	NumForm=Digit|NumType=Card	16	nummod	_	SpaceAfter=No
-23	]	]	PUNCT	Z	_	22	punct	_	_
+23	]	]	PUNCT	Z	_	25	punct	_	_
 24	v	v	ADP	Sl	Case=Loc	25	case	_	_
-25	Žirovnici	Žirovnica	PROPN	Npfsl	Case=Loc|Gender=Fem|Number=Sing	16	orphan	_	_
+25	Žirovnici	Žirovnica	PROPN	Npfsl	Case=Loc|Gender=Fem|Number=Sing	22	orphan	_	_
 26	ter	ter	CCONJ	Cc	_	27	cc	_	_
 27	očetu	oče	NOUN	Ncmsl	Case=Loc|Gender=Masc|Number=Sing	12	conj	_	_
 28	Šimnu	Šimn	PROPN	Npmsl	Case=Loc|Gender=Masc|Number=Sing	27	nmod	_	SpaceAfter=No
 29	,	,	PUNCT	Z	_	32	punct	_	_
 30	po	po	ADP	Sl	Case=Loc	32	case	_	_
 31	domače	domač	ADJ	Agpnsa	Case=Acc|Degree=Pos|Gender=Fem|Number=Sing	32	amod	_	_
-32	Ribčevemu	Ribčev	ADJ	Aspmsl	Case=Loc|Degree=Pos|Gender=Masc|Number=Sing|Poss=Yes	27	amod	_	_
+32	Ribčevemu	Ribčev	ADJ	Aspmsl	Case=Loc|Degree=Pos|Gender=Masc|Number=Sing|Poss=Yes	27	nmod	_	_
 33	(	(	PUNCT	Z	_	34	punct	_	SpaceAfter=No
 34	Hribčevemu	Hribčev	ADJ	Aspmsd	Case=Loc|Degree=Pos|Gender=Masc|Number=Sing|Poss=Yes	32	appos	_	SpaceAfter=No
 35	)	)	PUNCT	Z	_	34	punct	_	SpaceAfter=No
@@ -354,7 +354,7 @@
 
 # sent_id = 9.2
 # text = Že zelo zgodaj je kazal izjemno nadarjenost, zato so ga leta 1808 poslali k stricu Jožefu, ki je kot duhovnik služboval na Kopanju pri Veliki Račni.
-1	Že	že	PART	Q	_	5	advmod	_	_
+1	Že	že	PART	Q	_	3	advmod	_	_
 2	zelo	zelo	ADV	Rgp	Degree=Pos	3	advmod	_	_
 3	zgodaj	zgodaj	ADV	Rgp	Degree=Pos	5	advmod	_	_
 4	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	5	aux	_	_
@@ -434,7 +434,7 @@
 5	v	v	ADP	Sl	Case=Loc	6	case	_	_
 6	Ljubljani	Ljubljana	PROPN	Npfsl	Case=Loc|Gender=Fem|Number=Sing	7	obl	_	_
 7	zaključil	zaključiti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
-8	še	še	PART	Q	_	7	advmod	_	_
+8	še	še	PART	Q	_	10	advmod	_	_
 9	dva	dva	NUM	Mlcmda	Case=Acc|Gender=Masc|Number=Dual|NumForm=Word|NumType=Card	10	nummod	_	_
 10	letnika	letnik	NOUN	Ncmda	Case=Acc|Gender=Masc|Number=Dual	7	obj	_	_
 11	tedanje	tedanji	ADJ	Agpfsg	Case=Gen|Degree=Pos|Gender=Fem|Number=Sing	13	amod	_	_
@@ -451,7 +451,7 @@
 22	kjer	kjer	SCONJ	Cs	_	24	mark	_	_
 23	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	24	aux	_	_
 24	končal	končati	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	20	acl	_	_
-25	še	še	PART	Q	_	24	advmod	_	_
+25	še	še	PART	Q	_	27	advmod	_	_
 26	tretji	tretji	ADJ	Mlomsa	Case=Acc|Gender=Masc|Number=Sing|NumType=Ord	27	amod	_	_
 27	letnik	letnik	NOUN	Ncmsan	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	24	obj	_	SpaceAfter=No
 28	,	,	PUNCT	Z	_	32	punct	_	_
@@ -565,7 +565,7 @@
 16	,	,	PUNCT	Z	_	21	punct	_	_
 17	še	še	PART	Q	_	18	advmod	_	_
 18	vedno	vedno	ADV	Rgp	Degree=Pos	21	advmod	_	_
-19	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	21	obj	_	_
+19	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	21	iobj	_	_
 20	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	21	aux	_	_
 21	pomagal	pomagati	VERB	Vmbp-sm	Gender=Masc|Number=Sing|VerbForm=Part	5	parataxis	_	_
 22	stric	stric	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	21	nsubj	_	_
@@ -576,7 +576,7 @@
 27	si	se	PRON	Px---d--y	Case=Dat|PronType=Prs|Reflex=Yes|Variant=Short	29	expl	_	_
 28	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	29	aux	_	_
 29	služil	služiti	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	5	parataxis	_	_
-30	tudi	tudi	PART	Q	_	29	advmod	_	_
+30	tudi	tudi	PART	Q	_	33	advmod	_	_
 31	kot	kot	SCONJ	Cs	_	33	case	_	_
 32	domači	domač	ADJ	Agpmsny	Case=Nom|Definite=Def|Degree=Pos|Gender=Masc|Number=Sing	33	amod	_	_
 33	učitelj	učitelj	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	29	obl	_	_
@@ -591,7 +591,7 @@
 # sent_id = 12.5
 # text = To službo je moral zaradi svoje svobodomiselnosti in ker je gojencu, kasnejšemu pesniku in politiku Anastaziju Grünu (pravo ime Anton Alexander von Auersperg) - grofu Auerspergu, posojal prepovedane knjige, zapustiti.
 1	To	ta	DET	Pd-fsa	Case=Acc|Gender=Fem|Number=Sing|PronType=Dem	2	det	_	_
-2	službo	služba	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	4	obj	_	_
+2	službo	služba	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	35	obj	_	_
 3	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	4	aux	_	_
 4	moral	morati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
 5	zaradi	zaradi	ADP	Sg	Case=Gen	7	case	_	_
@@ -600,29 +600,29 @@
 8	in	in	CCONJ	Cc	_	31	cc	_	_
 9	ker	ker	SCONJ	Cs	_	31	mark	_	_
 10	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	31	aux	_	_
-11	gojencu	gojenec	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	35	obj	_	SpaceAfter=No
+11	gojencu	gojenec	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	35	iobj	_	SpaceAfter=No
 12	,	,	PUNCT	Z	_	14	punct	_	_
 13	kasnejšemu	kasen	ADJ	Agcmsd	Case=Dat|Degree=Cmp|Gender=Masc|Number=Sing	14	amod	_	_
 14	pesniku	pesnik	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	11	appos	_	_
 15	in	in	CCONJ	Cc	_	16	cc	_	_
 16	politiku	politik	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	14	conj	_	_
-17	Anastaziju	Anastazij	PROPN	Npmsd	Case=Dat|Gender=Masc|Number=Sing	16	nmod	_	_
+17	Anastaziju	Anastazij	PROPN	Npmsd	Case=Dat|Gender=Masc|Number=Sing	14	nmod	_	_
 18	Grünu	Grün	PROPN	Npmsd	Case=Dat|Gender=Masc|Number=Sing	17	flat:name	_	_
 19	(	(	PUNCT	Z	_	21	punct	_	SpaceAfter=No
 20	pravo	pravi	ADJ	Agpnsn	Case=Nom|Degree=Pos|Gender=Neut|Number=Sing	21	amod	_	_
-21	ime	ime	NOUN	Ncnsn	Case=Nom|Gender=Neut|Number=Sing	16	appos	_	_
+21	ime	ime	NOUN	Ncnsn	Case=Nom|Gender=Neut|Number=Sing	14	appos	_	_
 22	Anton	Anton	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	21	nmod	_	_
 23	Alexander	Alexander	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	22	flat:name	_	_
 24	von	von	X	Xf	Foreign=Yes	22	flat:name	_	_
 25	Auersperg	Auersperg	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	22	flat:name	_	SpaceAfter=No
 26	)	)	PUNCT	Z	_	21	punct	_	_
-27	-	-	PUNCT	Z	_	28	punct	_	_
+27	-	-	PUNCT	Z	_	21	punct	_	_
 28	grofu	grof	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	31	iobj	_	_
 29	Auerspergu	Auersperg	PROPN	Npmsd	Case=Dat|Gender=Masc|Number=Sing	28	nmod	_	SpaceAfter=No
-30	,	,	PUNCT	Z	_	28	punct	_	_
+30	,	,	PUNCT	Z	_	21	punct	_	_
 31	posojal	posojati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	4	advcl	_	_
 32	prepovedane	prepovedan	ADJ	Appfpa	Case=Acc|Degree=Pos|Gender=Fem|Number=Plur|VerbForm=Part	33	amod	_	_
-33	knjige	knjiga	NOUN	Ncfpa	Case=Acc|Gender=Fem|Number=Plur	35	obj	_	SpaceAfter=No
+33	knjige	knjiga	NOUN	Ncfpa	Case=Acc|Gender=Fem|Number=Plur	31	obj	_	SpaceAfter=No
 34	,	,	PUNCT	Z	_	31	punct	_	_
 35	zapustiti	zapustiti	VERB	Vmen	Aspect=Perf|VerbForm=Inf	31	xcomp	_	SpaceAfter=No
 36	.	.	PUNCT	Z	_	4	punct	_	_
@@ -712,7 +712,7 @@
 2	leta	leto	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	4	obl	_	_
 3	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	4	aux	_	_
 4	sprejel	sprejeti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
-5	še	še	PART	Q	_	4	advmod	_	_
+5	še	še	PART	Q	_	8	advmod	_	_
 6	neplačano	neplačan	ADJ	Agpnsa	Case=Acc|Degree=Pos|Gender=Neut|Number=Sing	8	amod	_	_
 7	delovno	deloven	ADJ	Agpnsa	Case=Acc|Degree=Pos|Gender=Neut|Number=Sing	8	amod	_	_
 8	mesto	mesto	NOUN	Ncnsa	Case=Acc|Gender=Neut|Number=Sing	4	obj	_	_
@@ -737,7 +737,7 @@
 11	Matijem	Matija	PROPN	Npmsi	Case=Ins|Gender=Masc|Number=Sing	10	nmod	_	_
 12	Čopom	Čop	PROPN	Npmsi	Case=Ins|Gender=Masc|Number=Sing	11	flat:name	_	SpaceAfter=No
 13	,	,	PUNCT	Z	_	14	punct	_	_
-14	rojakom	rojak	NOUN	Ncmsi	Case=Ins|Gender=Masc|Number=Sing	8	conj	_	_
+14	rojakom	rojak	NOUN	Ncmsi	Case=Ins|Gender=Masc|Number=Sing	8	appos	_	_
 15	iz	iz	ADP	Sg	Case=Gen	16	case	_	_
 16	Žirovnice	Žirovnica	PROPN	Npfsg	Case=Gen|Gender=Fem|Number=Sing	14	nmod	_	SpaceAfter=No
 17	,	,	PUNCT	Z	_	21	punct	_	_
@@ -804,9 +804,9 @@
 8	leta	leto	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	3	conj	_	_
 9	1830	1830	NUM	Mdc	NumForm=Digit|NumType=Card	8	nummod	_	SpaceAfter=No
 10	,	,	PUNCT	Z	_	11	punct	_	_
-11	1831	1831	NUM	Mdc	NumForm=Digit|NumType=Card	8	nummod	_	SpaceAfter=No
+11	1831	1831	NUM	Mdc	NumForm=Digit|NumType=Card	9	conj	_	SpaceAfter=No
 12	,	,	PUNCT	Z	_	13	punct	_	_
-13	1832	1832	NUM	Mdc	NumForm=Digit|NumType=Card	11	conj	_	SpaceAfter=No
+13	1832	1832	NUM	Mdc	NumForm=Digit|NumType=Card	9	conj	_	SpaceAfter=No
 14	,	,	PUNCT	Z	_	15	punct	_	_
 15	1834	1834	NUM	Mdc	NumForm=Digit|NumType=Card	9	conj	_	_
 16	in	in	CCONJ	Cc	_	17	cc	_	_
@@ -843,7 +843,7 @@
 2	spor	spor	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	20	nsubj	_	_
 3	zaradi	zaradi	ADP	Sg	Case=Gen	6	case	_	_
 4	nasprotujočih	nasprotujoč	ADJ	Appnpg	Case=Gen|Degree=Pos|Gender=Neut|Number=Plur|VerbForm=Part	6	amod	_	_
-5	si	se	PRON	Px---d--y	Case=Dat|PronType=Prs|Reflex=Yes|Variant=Short	20	expl	_	_
+5	si	se	PRON	Px---d--y	Case=Dat|PronType=Prs|Reflex=Yes|Variant=Short	4	expl	_	_
 6	mnenj	mnenje	NOUN	Ncnpg	Case=Gen|Gender=Neut|Number=Plur	20	obl	_	_
 7	glede	glede	ADP	Sg	Case=Gen	9	case	_	_
 8	nadaljnjega	nadaljnji	ADJ	Agpmsg	Case=Gen|Degree=Pos|Gender=Masc|Number=Sing	9	amod	_	_
@@ -851,7 +851,7 @@
 10	slovenske	slovenski	ADJ	Agpfsg	Case=Gen|Degree=Pos|Gender=Fem|Number=Sing	11	amod	_	_
 11	književnosti	književnost	NOUN	Ncfsg	Case=Gen|Gender=Fem|Number=Sing	9	nmod	_	_
 12	(	(	PUNCT	Z	_	13	punct	_	SpaceAfter=No
-13	čbeličarji	čbeličar	NOUN	Ncmpn	Case=Nom|Gender=Masc|Number=Plur	20	nsubj	_	_
+13	čbeličarji	čbeličar	NOUN	Ncmpn	Case=Nom|Gender=Masc|Number=Plur	9	appos	_	_
 14	s	z	ADP	Si	Case=Ins	15	case	_	_
 15	Prešernom	Prešeren	PROPN	Npmsi	Case=Ins|Gender=Masc|Number=Sing	13	nmod	_	_
 16	in	in	CCONJ	Cc	_	17	cc	_	_
@@ -865,11 +865,11 @@
 24	v	v	ADP	Sl	Case=Loc	26	case	_	_
 25	slovenskem	slovenski	ADJ	Agpmsl	Case=Loc|Degree=Pos|Gender=Masc|Number=Sing	26	amod	_	_
 26	jeziku	jezik	NOUN	Ncmsl	Case=Loc|Gender=Masc|Number=Sing	23	nmod	_	SpaceAfter=No
-27	,	,	PUNCT	Z	_	28	punct	_	_
+27	,	,	PUNCT	Z	_	54	punct	_	_
 28	janzenisti	janzenist	NOUN	Ncmpn	Case=Nom|Gender=Masc|Number=Plur	54	nsubj	_	_
-29	pa	pa	CCONJ	Cc	_	28	orphan	_	_
+29	pa	pa	CCONJ	Cc	_	54	advmod	_	_
 30	za	za	ADP	Sa	Case=Acc	31	case	_	_
-31	književnost	književnost	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	28	orphan	_	SpaceAfter=No
+31	književnost	književnost	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	28	nmod	_	SpaceAfter=No
 32	,	,	PUNCT	Z	_	33	punct	_	_
 33	osnovano	osnovan	ADJ	Appfsa	Case=Acc|Degree=Pos|Gender=Fem|Number=Sing|VerbForm=Part	31	amod	_	_
 34	na	na	ADP	Sl	Case=Loc	36	case	_	_
@@ -909,14 +909,14 @@
 # newpar id = 18
 # sent_id = 18.1
 # text = Zahtevi, naj ima v črkopisu vsak glas svojo črko, ki jo je Kopitar kot nasprotnik tedanje pisave bohoričice podal v svoji slovnici, sta sledila slovničarja Franc Serafin Metelko in Peter Dajnko, ki sta objavila vsak svojo različico novega črkopisa, imenovana metelčica in dajnčica.
-1	Zahtevi	zahteva	NOUN	Ncfsd	Case=Dat|Gender=Fem|Number=Sing	27	obj	_	SpaceAfter=No
+1	Zahtevi	zahteva	NOUN	Ncfsd	Case=Dat|Gender=Fem|Number=Sing	27	iobj	_	SpaceAfter=No
 2	,	,	PUNCT	Z	_	4	punct	_	_
 3	naj	naj	SCONJ	Cs	_	4	mark	_	_
 4	ima	imeti	VERB	Vmpr3s-n	Aspect=Imp|Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	1	acl	_	_
 5	v	v	ADP	Sl	Case=Loc	6	case	_	_
 6	črkopisu	črkopis	NOUN	Ncmsl	Case=Loc|Gender=Masc|Number=Sing	4	obl	_	_
 7	vsak	vsak	DET	Pg-msa	Case=Acc|Gender=Masc|Number=Sing|PronType=Tot	8	det	_	_
-8	glas	glas	NOUN	Ncmsan	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	4	obl	_	_
+8	glas	glas	NOUN	Ncmsan	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	4	obj	_	_
 9	svojo	svoj	DET	Px-fsa	Case=Acc|Gender=Fem|Number=Sing|Poss=Yes|PronType=Prs|Reflex=Yes	10	det	_	_
 10	črko	črka	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	4	obj	_	SpaceAfter=No
 11	,	,	PUNCT	Z	_	21	punct	_	_
@@ -946,14 +946,14 @@
 35	,	,	PUNCT	Z	_	38	punct	_	_
 36	ki	ki	SCONJ	Cs	_	38	mark	_	_
 37	sta	biti	AUX	Va-r3d-n	Mood=Ind|Number=Dual|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	38	aux	_	_
-38	objavila	objaviti	VERB	Vmep-dm	Aspect=Perf|Gender=Masc|Number=Dual|VerbForm=Part	33	acl	_	_
+38	objavila	objaviti	VERB	Vmep-dm	Aspect=Perf|Gender=Masc|Number=Dual|VerbForm=Part	28	acl	_	_
 39	vsak	vsak	DET	Pg-msa	Case=Acc|Gender=Masc|Number=Sing|PronType=Tot	41	det	_	_
 40	svojo	svoj	DET	Px-fsa	Case=Acc|Gender=Fem|Number=Sing|Poss=Yes|PronType=Prs|Reflex=Yes	41	det	_	_
 41	različico	različica	NOUN	Ncfsa	Case=Acc|Gender=Fem|Number=Sing	38	obj	_	_
 42	novega	nov	ADJ	Agpmsg	Case=Gen|Degree=Pos|Gender=Masc|Number=Sing	43	amod	_	_
 43	črkopisa	črkopis	NOUN	Ncmsg	Case=Gen|Gender=Masc|Number=Sing	41	nmod	_	SpaceAfter=No
 44	,	,	PUNCT	Z	_	45	punct	_	_
-45	imenovana	imenovan	ADJ	Appfsn	Case=Nom|Degree=Pos|Gender=Fem|Number=Dual|VerbForm=Part	43	amod	_	_
+45	imenovana	imenovan	ADJ	Appfsn	Case=Nom|Degree=Pos|Gender=Fem|Number=Dual|VerbForm=Part	41	amod	_	_
 46	metelčica	metelčica	NOUN	Ncfsn	Case=Nom|Gender=Fem|Number=Sing	45	obl	_	_
 47	in	in	CCONJ	Cc	_	48	cc	_	_
 48	dajnčica	dajnčica	NOUN	Ncfsn	Case=Nom|Gender=Fem|Number=Sing	46	conj	_	SpaceAfter=No
@@ -971,7 +971,7 @@
 
 # sent_id = 18.3
 # text = Metelčica zato, ker jo je sestavljalo preveč zapletenih in nepotrebnih črk, prevzetih tudi iz cirilice.
-1	Metelčica	Metelčica	PROPN	Npfsn	Case=Nom|Gender=Fem|Number=Sing	7	parataxis	_	_
+1	Metelčica	Metelčica	PROPN	Npfsn	Case=Nom|Gender=Fem|Number=Sing	7	nsubj	_	_
 2	zato	zato	ADV	Rgp	Degree=Pos	7	mark	_	SpaceAfter=No
 3	,	,	PUNCT	Z	_	2	punct	_	_
 4	ker	ker	SCONJ	Cs	_	2	fixed	_	_
@@ -985,7 +985,7 @@
 12	črk	črka	NOUN	Ncfpg	Case=Gen|Gender=Fem|Number=Plur	7	nsubj	_	SpaceAfter=No
 13	,	,	PUNCT	Z	_	14	punct	_	_
 14	prevzetih	prevzet	ADJ	Appmpg	Case=Gen|Degree=Pos|Gender=Masc|Number=Plur|VerbForm=Part	12	amod	_	_
-15	tudi	tudi	PART	Q	_	14	advmod	_	_
+15	tudi	tudi	PART	Q	_	17	advmod	_	_
 16	iz	iz	ADP	Sg	Case=Gen	17	case	_	_
 17	cirilice	cirilica	NOUN	Ncfsg	Case=Gen|Gender=Fem|Number=Sing	14	nmod	_	SpaceAfter=No
 18	.	.	PUNCT	Z	_	7	punct	_	_
@@ -1043,9 +1043,9 @@
 13	Sonet	sonet	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	8	acl	_	_
 14	o	o	ADP	Sl	Case=Loc	15	case	_	_
 15	kaši	kaša	NOUN	Ncfsl	Case=Loc|Gender=Fem|Number=Sing	13	nmod	_	SpaceAfter=No
-16	,	,	PUNCT	Z	_	18	punct	_	_
+16	,	,	PUNCT	Z	_	13	punct	_	_
 17	iz	iz	ADP	Sg	Case=Gen	18	case	_	_
-18	Kopitarja	Kopitar	PROPN	Npmsg	Case=Gen|Gender=Masc|Number=Sing	15	conj	_	SpaceAfter=No
+18	Kopitarja	Kopitar	PROPN	Npmsg	Case=Gen|Gender=Masc|Number=Sing	8	appos	_	SpaceAfter=No
 19	,	,	PUNCT	Z	_	25	punct	_	_
 20	s	z	ADP	Si	Case=Ins	21	case	_	_
 21	katerim	kateri	DET	Pq-msi	Case=Ins|Gender=Masc|Number=Sing|PronType=Int	25	obl	_	_
@@ -1178,7 +1178,7 @@
 8	,	,	PUNCT	Z	_	17	punct	_	_
 9	vendar	vendar	CCONJ	Cc	_	17	cc	_	_
 10	so	biti	AUX	Va-r3p-n	Mood=Ind|Number=Plur|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	17	aux	_	_
-11	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	17	obj	_	_
+11	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	17	iobj	_	_
 12	avstrijske	avstrijski	ADJ	Agpfpn	Case=Nom|Degree=Pos|Gender=Fem|Number=Plur	13	amod	_	_
 13	oblasti	oblast	NOUN	Ncfpn	Case=Nom|Gender=Fem|Number=Plur	17	nsubj	_	_
 14	prošnje	prošnja	NOUN	Ncfpn	Case=Nom|Gender=Fem|Number=Plur	17	nsubj	_	_
@@ -1203,7 +1203,7 @@
 1	Poleg	poleg	ADP	Sg	Case=Gen	2	case	_	_
 2	tega	ta	DET	Pd-nsg	Case=Gen|Gender=Neut|Number=Sing|PronType=Dem	8	obl	_	_
 3	Julija	Julij	PROPN	Npmsg	Case=Gen|Gender=Masc|Number=Sing	8	obl	_	_
-4	Primic	Primic	PROPN	Npfsn	Case=Nom|Gender=Fem|Number=Sing	3	flat:name	_	_
+4	Primic	Primic	PROPN	Npfsn	Case=Nom|Gender=Fem|Number=Sing	8	nsubj	_	_
 5	njegove	njegov	DET	Ps3fsgsm	Case=Gen|Gender=Fem|Gender[psor]=Masc|Number=Sing|Number[psor]=Sing|Person=3|Poss=Yes|PronType=Prs	6	det	_	_
 6	ljubezni	ljubezen	NOUN	Ncfsg	Case=Gen|Gender=Fem|Number=Sing	8	obj	_	_
 7	ni	biti	AUX	Va-r3s-y	Mood=Ind|Number=Sing|Person=3|Polarity=Neg|Tense=Pres|VerbForm=Fin	8	aux	_	_
@@ -1265,7 +1265,7 @@
 3	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	4	aux	_	_
 4	očital	očitati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
 5	tudi	tudi	PART	Q	_	6	advmod	_	_
-6	sebi	se	PRON	Px---d	Case=Dat|PronType=Prs|Reflex=Yes	4	obj	_	SpaceAfter=No
+6	sebi	se	PRON	Px---d	Case=Dat|PronType=Prs|Reflex=Yes	4	iobj	_	SpaceAfter=No
 7	,	,	PUNCT	Z	_	10	punct	_	_
 8	ker	ker	SCONJ	Cs	_	10	mark	_	_
 9	ni	biti	AUX	Va-r3s-y	Mood=Ind|Number=Sing|Person=3|Polarity=Neg|Tense=Pres|VerbForm=Fin	10	aux	_	_
@@ -1287,8 +1287,8 @@
 25	rešil	rešiti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	19	acl	_	SpaceAfter=No
 26	,	,	PUNCT	Z	_	31	punct	_	_
 27	čeprav	čeprav	SCONJ	Cs	_	31	mark	_	_
-28	tudi	tudi	PART	Q	_	31	advmod	_	_
-29	sam	sam	ADJ	Agpmsnn	Case=Nom|Definite=Ind|Degree=Pos|Gender=Masc|Number=Sing	31	nsubj	_	_
+28	tudi	tudi	PART	Q	_	29	advmod	_	_
+29	sam	sam	ADJ	Agpmsnn	Case=Nom|Definite=Ind|Degree=Pos|Gender=Masc|Number=Sing	33	obl	_	_
 30	ni	biti	AUX	Va-r3s-y	Mood=Ind|Number=Sing|Person=3|Polarity=Neg|Tense=Pres|VerbForm=Fin	31	aux	_	_
 31	znal	znati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	25	advcl	_	_
 32	dobro	dobro	ADV	Rgp	Degree=Pos	33	advmod	_	_
@@ -1312,11 +1312,11 @@
 13	Savici	Savica	PROPN	Npfsl	Case=Loc|Gender=Fem|Number=Sing	11	nmod	_	SpaceAfter=No
 14	,	,	PUNCT	Z	_	16	punct	_	_
 15	ki	ki	SCONJ	Cs	_	16	mark	_	_
-16	ima	imeti	VERB	Vmpr3s-n	Aspect=Imp|Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	10	acl	_	_
+16	ima	imeti	VERB	Vmpr3s-n	Aspect=Imp|Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	11	acl	_	_
 17	pred	pred	ADP	Si	Case=Ins	19	case	_	_
 18	samim	sam	ADJ	Agpmsi	Case=Ins|Degree=Pos|Gender=Masc|Number=Sing	19	amod	_	_
 19	začetkom	začetek	NOUN	Ncmsi	Case=Ins|Gender=Masc|Number=Sing	16	obl	_	_
-20	tudi	tudi	PART	Q	_	16	advmod	_	_
+20	tudi	tudi	PART	Q	_	22	advmod	_	_
 21	posvetilni	posvetilen	ADJ	Agpmsay	Case=Acc|Definite=Def|Degree=Pos|Gender=Masc|Number=Sing	22	amod	_	_
 22	sonet	sonet	NOUN	Ncmsan	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	16	obj	_	_
 23	Matiji	Matija	PROPN	Npmsd	Case=Dat|Gender=Masc|Number=Sing	22	nmod	_	_
@@ -1349,7 +1349,7 @@
 21	bila	biti	AUX	Va-p-sf	Gender=Fem|Number=Sing|VerbForm=Part	24	cop	_	_
 22	tedaj	tedaj	ADV	Rgp	Degree=Pos	24	advmod	_	_
 23	še	še	PART	Q	_	24	advmod	_	_
-24	mladoletna	mladoleten	ADJ	Agpfsn	Case=Nom|Degree=Pos|Gender=Fem|Number=Sing	15	acl	_	SpaceAfter=No
+24	mladoletna	mladoleten	ADJ	Agpfsn	Case=Nom|Degree=Pos|Gender=Fem|Number=Sing	12	acl	_	SpaceAfter=No
 25	.	.	PUNCT	Z	_	10	punct	_	_
 
 # sent_id = 23.2
@@ -1373,14 +1373,14 @@
 17	1840	1840	NUM	Mdc	NumForm=Digit|NumType=Card	16	nummod	_	SpaceAfter=No
 18	)	)	PUNCT	Z	_	12	punct	_	SpaceAfter=No
 19	,	,	PUNCT	Z	_	20	punct	_	_
-20	Ernestino	Ernestina	PROPN	Npfsa	Case=Acc|Gender=Fem|Number=Sing	9	list	_	_
+20	Ernestino	Ernestina	PROPN	Npfsa	Case=Acc|Gender=Fem|Number=Sing	9	conj	_	_
 21	(	(	PUNCT	Z	_	23	punct	_	SpaceAfter=No
 22	18.	18.	NUM	Mdo	NumForm=Digit|NumType=Ord	23	nummod	_	_
 23	december	december	NOUN	Ncmsan	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	20	appos	_	_
 24	1842	1842	NUM	Mdc	NumForm=Digit|NumType=Card	23	nummod	_	_
 25	–	–	PUNCT	Z	_	27	punct	_	_
 26	3.	3.	NUM	Mdo	NumForm=Digit|NumType=Ord	27	nummod	_	_
-27	december	december	NOUN	Ncmsan	Animacy=Inan|Case=Nom|Gender=Masc|Number=Sing	23	list	_	_
+27	december	december	NOUN	Ncmsan	Animacy=Inan|Case=Nom|Gender=Masc|Number=Sing	23	appos	_	_
 28	1917	1917	NUM	Mdc	NumForm=Digit|NumType=Card	27	nummod	_	SpaceAfter=No
 29	)	)	PUNCT	Z	_	23	punct	_	_
 30	in	in	CCONJ	Cc	_	31	cc	_	_
@@ -1391,7 +1391,7 @@
 35	1845	1845	NUM	Mdc	NumForm=Digit|NumType=Card	34	nummod	_	_
 36	–	–	PUNCT	Z	_	38	punct	_	_
 37	17.	17.	NUM	Mdo	NumForm=Digit|NumType=Ord	38	nummod	_	_
-38	avgust	avgust	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	34	list	_	_
+38	avgust	avgust	NOUN	Ncmsn	Case=Nom|Gender=Masc|Number=Sing	34	appos	_	_
 39	1855	1855	NUM	Mdc	NumForm=Digit|NumType=Card	38	nummod	_	SpaceAfter=No
 40	)	)	PUNCT	Z	_	34	punct	_	SpaceAfter=No
 41	.	.	PUNCT	Z	_	1	punct	_	_
@@ -1413,7 +1413,7 @@
 13	stalne	stalen	ADJ	Agpmpa	Case=Acc|Degree=Pos|Gender=Masc|Number=Plur	14	amod	_	_
 14	stike	stik	NOUN	Ncmpa	Case=Acc|Gender=Masc|Number=Plur	12	obj	_	_
 15	in	in	CCONJ	Cc	_	21	cc	_	_
-16	jim	on	PRON	Pp3mpd--y	Case=Dat|Gender=Masc|Number=Plur|Person=3|PronType=Prs|Variant=Short	21	obj	_	_
+16	jim	on	PRON	Pp3mpd--y	Case=Dat|Gender=Masc|Number=Plur|Person=3|PronType=Prs|Variant=Short	21	iobj	_	_
 17	po	po	ADP	Sl	Case=Loc	19	case	_	_
 18	svojih	svoj	DET	Px-fpl	Case=Loc|Gender=Fem|Number=Plur|Poss=Yes|PronType=Prs|Reflex=Yes	19	det	_	_
 19	močeh	moč	NOUN	Ncfpl	Case=Loc|Gender=Fem|Number=Plur	21	obl	_	_
@@ -1487,17 +1487,17 @@
 9	,	,	PUNCT	Z	_	14	punct	_	_
 10	pri	pri	ADP	Sl	Case=Loc	11	case	_	_
 11	čemer	kar	PRON	Pr-nsl	Case=Loc|Gender=Neut|Number=Sing|PronType=Rel	15	obl	_	_
-12	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	15	obj	_	_
+12	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	15	iobj	_	_
 13	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	14	aux	_	_
 14	začel	začeti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	4	parataxis	_	_
 15	pomagati	pomagati	VERB	Vmbn	VerbForm=Inf	14	xcomp	_	_
-16	tudi	tudi	PART	Q	_	15	advmod	_	_
+16	tudi	tudi	PART	Q	_	17	advmod	_	_
 17	Prešeren	Prešeren	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	15	nsubj	_	_
 18	in	in	CCONJ	Cc	_	20	cc	_	_
 19	tako	tako	ADV	Rgp	Degree=Pos	20	advmod	_	_
 20	razvil	razviti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	15	conj	_	_
 21	zanimanje	zanimanje	NOUN	Ncnsa	Case=Acc|Gender=Neut|Number=Sing	20	obj	_	_
-22	tudi	tudi	PART	Q	_	20	advmod	_	_
+22	tudi	tudi	PART	Q	_	25	advmod	_	_
 23	za	za	ADP	Sa	Case=Acc	25	case	_	_
 24	tovrstno	tovrsten	ADJ	Agpnsa	Case=Acc|Degree=Pos|Gender=Neut|Number=Sing	25	amod	_	_
 25	slovstvo	slovstvo	NOUN	Ncnsa	Case=Acc|Gender=Neut|Number=Sing	20	obl	_	SpaceAfter=No
@@ -1582,7 +1582,7 @@
 24	načrtovala	načrtovati	VERB	Vmpp-dm	Aspect=Imp|Gender=Masc|Number=Dual|VerbForm=Part	3	parataxis	_	_
 25	pa	pa	CCONJ	Cc	_	24	advmod	_	_
 26	sta	biti	AUX	Va-r3d-n	Mood=Ind|Number=Dual|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	24	aux	_	_
-27	tudi	tudi	PART	Q	_	24	advmod	_	_
+27	tudi	tudi	PART	Q	_	29	advmod	_	_
 28	nov	nov	ADJ	Agpmsan	Case=Acc|Definite=Ind|Degree=Pos|Gender=Masc|Number=Sing	29	amod	_	_
 29	časopis	časopis	NOUN	Ncmsan	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	24	obj	_	SpaceAfter=No
 30	,	,	PUNCT	Z	_	34	punct	_	_
@@ -1633,7 +1633,7 @@
 1	Vdajal	vdajati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
 2	se	se	PRON	Px------y	PronType=Prs|Reflex=Yes|Variant=Short	1	expl	_	_
 3	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	1	aux	_	_
-4	alkoholu	alkohol	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	1	obj	_	_
+4	alkoholu	alkohol	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	1	iobj	_	_
 5	in	in	CCONJ	Cc	_	6	cc	_	_
 6	postajal	postajati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	1	conj	_	_
 7	čedalje	čedalje	ADV	Rgp	Degree=Pos	8	advmod	_	_
@@ -1690,7 +1690,7 @@
 15	,	,	PUNCT	Z	_	21	punct	_	_
 16	v	v	ADP	Sa	Case=Acc	18	case	_	_
 17	katere	kateri	DET	Pq-mpa	Case=Acc|Gender=Masc|Number=Sing|PronType=Int	18	det	_	_
-18	lokal	lokal	NOUN	Ncmsan	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	21	obl	_	_
+18	lokal	lokal	NOUN	Ncmsan	Animacy=Inan|Case=Acc|Gender=Masc|Number=Sing	21	obj	_	_
 19	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	21	aux	_	_
 20	redno	redno	ADV	Rgp	Degree=Pos	21	advmod	_	_
 21	zahajal	zahajati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	13	acl	_	SpaceAfter=No
@@ -1701,7 +1701,7 @@
 1	Jerici	Jerica	PROPN	Npfsd	Case=Dat|Gender=Fem|Number=Sing	3	iobj	_	_
 2	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	3	aux	_	_
 3	posvetil	posvetiti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
-4	tudi	tudi	PART	Q	_	3	advmod	_	_
+4	tudi	tudi	PART	Q	_	6	advmod	_	_
 5	nekaj	nekaj	DET	Rgp	PronType=Ind	6	det	_	_
 6	pesmi	pesem	NOUN	Ncfpg	Case=Gen|Gender=Fem|Number=Plur	3	obj	_	SpaceAfter=No
 7	.	.	PUNCT	Z	_	3	punct	_	_
@@ -1763,7 +1763,7 @@
 24	v	v	ADP	Sl	Case=Loc	26	case	_	_
 25	umetniški	umetniški	ADJ	Agpfsl	Case=Loc|Degree=Pos|Gender=Fem|Number=Sing	26	amod	_	_
 26	vrednosti	vrednost	NOUN	Ncfsl	Case=Loc|Gender=Fem|Number=Sing	28	obl	_	_
-27	Prešeren	Prešeren	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	28	nsubj	_	_
+27	Prešeren	Prešeren	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	26	nmod	_	_
 28	presegal	presegati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	14	advcl	_	SpaceAfter=No
 29	.	.	PUNCT	Z	_	4	punct	_	_
 
@@ -1791,7 +1791,7 @@
 # text = Jovan Vesel Koseski je namreč pisal pesmi s kmečko tematiko, ki je bila razumljiva kmečkemu prebivalstvu, ki je bilo v tistih časih večinsko, medtem ko je Prešeren pisal visoko poezijo, ki so ji bili kos le redki.
 1	Jovan	Jovan	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	6	nsubj	_	_
 2	Vesel	Vesel	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	1	flat:name	_	_
-3	Koseski	Koseski	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	2	flat:name	_	_
+3	Koseski	Koseski	PROPN	Npmsn	Case=Nom|Gender=Masc|Number=Sing	1	flat:name	_	_
 4	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	6	aux	_	_
 5	namreč	namreč	CCONJ	Cc	_	6	advmod	_	_
 6	pisal	pisati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
@@ -1803,7 +1803,7 @@
 12	ki	ki	SCONJ	Cs	_	15	mark	_	_
 13	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	15	aux	_	_
 14	bila	biti	AUX	Va-p-sf	Gender=Fem|Number=Sing|VerbForm=Part	15	cop	_	_
-15	razumljiva	razumljiv	ADJ	Agpfsn	Case=Nom|Degree=Pos|Gender=Fem|Number=Sing	10	acl	_	_
+15	razumljiva	razumljiv	ADJ	Agpfsn	Case=Nom|Degree=Pos|Gender=Fem|Number=Sing	7	acl	_	_
 16	kmečkemu	kmečki	ADJ	Agpnsd	Case=Dat|Degree=Pos|Gender=Neut|Number=Sing	17	amod	_	_
 17	prebivalstvu	prebivalstvo	NOUN	Ncnsd	Case=Dat|Gender=Neut|Number=Sing	15	obj	_	SpaceAfter=No
 18	,	,	PUNCT	Z	_	25	punct	_	_
@@ -1902,7 +1902,7 @@
 20	,	,	PUNCT	Z	_	23	punct	_	_
 21	med	med	ADP	Si	Case=Ins	22	case	_	_
 22	njimi	on	PRON	Pp3mpi	Case=Ins|Gender=Masc|Number=Plur|Person=3|PronType=Prs	23	orphan	_	_
-23	Zdravljico	Zdravljice	PROPN	Npfsa	Case=Acc|Gender=Fem|Number=Sing	19	appos	_	_
+23	Zdravljico	Zdravljice	PROPN	Npfsa	Case=Acc|Gender=Fem|Number=Sing	16	parataxis	_	_
 24	(	(	PUNCT	Z	_	25	punct	_	SpaceAfter=No
 25	napisano	napisan	ADJ	Appnsn	Case=Nom|Degree=Pos|Gender=Neut|Number=Sing|VerbForm=Part	23	amod	_	_
 26	leta	leto	NOUN	Ncnsg	Case=Gen|Gender=Neut|Number=Sing	25	obl	_	_
@@ -1975,7 +1975,7 @@
 12	kamor	kamor	SCONJ	Cs	_	15	mark	_	_
 13	se	se	PRON	Px------y	PronType=Prs|Reflex=Yes|Variant=Short	15	expl	_	_
 14	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	15	aux	_	_
-15	preselil	preseliti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	8	advcl	_	_
+15	preselil	preseliti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	10	acl	_	_
 16	jeseni	jeseni	ADV	Rgp	Degree=Pos	15	advmod	_	SpaceAfter=No
 17	.	.	PUNCT	Z	_	4	punct	_	_
 
@@ -1991,7 +1991,7 @@
 8	,	,	PUNCT	Z	_	9	punct	_	_
 9	gospodinjila	gospodinjiti	VERB	Vmpp-sf	Aspect=Imp|Gender=Fem|Number=Sing|VerbForm=Part	4	parataxis	_	_
 10	pa	pa	CCONJ	Cc	_	9	advmod	_	_
-11	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	9	obj	_	_
+11	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	9	iobj	_	_
 12	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	9	aux	_	_
 13	sestra	sestra	NOUN	Ncfsn	Case=Nom|Gender=Fem|Number=Sing	9	nsubj	_	_
 14	Katra	Katra	PROPN	Npfsn	Case=Nom|Gender=Fem|Number=Sing	13	nmod	_	_
@@ -2027,7 +2027,7 @@
 10	pa	pa	CCONJ	Cc	_	12	advmod	_	_
 11	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	12	aux	_	_
 12	objavil	objaviti	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	3	parataxis	_	_
-13	še	še	PART	Q	_	12	advmod	_	_
+13	še	še	PART	Q	_	16	advmod	_	_
 14	v	v	ADP	Sl	Case=Loc	16	case	_	_
 15	zadnjem	zadnji	ADJ	Agpmsl	Case=Loc|Degree=Pos|Gender=Masc|Number=Sing	16	amod	_	_
 16	letniku	letnik	NOUN	Ncmsl	Case=Loc|Gender=Masc|Number=Sing	12	obl	_	_
@@ -2048,7 +2048,7 @@
 9	pa	pa	CCONJ	Cc	_	8	advmod	_	_
 10	so	biti	AUX	Va-r3p-n	Mood=Ind|Number=Plur|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	8	aux	_	_
 11	se	se	PRON	Px------y	PronType=Prs|Reflex=Yes|Variant=Short	8	expl	_	_
-12	tudi	tudi	PART	Q	_	8	advmod	_	_
+12	tudi	tudi	PART	Q	_	14	advmod	_	_
 13	resnejši	resen	ADJ	Agcmpn	Case=Nom|Degree=Cmp|Gender=Masc|Number=Plur	14	amod	_	_
 14	znaki	znak	NOUN	Ncmpn	Case=Nom|Gender=Masc|Number=Plur	8	nsubj	_	_
 15	bolezni	bolezen	NOUN	Ncfsg	Case=Gen|Gender=Fem|Number=Sing	14	nmod	_	SpaceAfter=No
@@ -2073,7 +2073,7 @@
 15	ki	ki	SCONJ	Cs	_	21	mark	_	_
 16	so	biti	AUX	Va-r3p-n	Mood=Ind|Number=Plur|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	21	aux	_	_
 17	se	se	PRON	Px------y	PronType=Prs|Reflex=Yes|Variant=Short	21	expl	_	_
-18	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	21	obj	_	_
+18	mu	on	PRON	Pp3msd--y	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Variant=Short	21	iobj	_	_
 19	kot	kot	SCONJ	Cs	_	20	case	_	_
 20	odvetniku	odvetnik	NOUN	Ncmsd	Case=Dat|Gender=Masc|Number=Sing	21	obl	_	_
 21	ponujale	ponujati	VERB	Vmpp-pf	Aspect=Imp|Gender=Fem|Number=Plur|VerbForm=Part	13	acl	_	SpaceAfter=No
@@ -2083,7 +2083,7 @@
 25	bi	biti	AUX	Va-c	Mood=Cnd|VerbForm=Fin	27	aux	_	_
 26	revne	reven	ADJ	Agpmpa	Case=Acc|Degree=Pos|Gender=Masc|Number=Plur	27	obj	_	_
 27	zastopal	zastopati	VERB	Vmpp-sm	Aspect=Imp|Gender=Masc|Number=Sing|VerbForm=Part	21	conj	_	_
-28	celo	celo	PART	Q	_	27	advmod	_	_
+28	celo	celo	PART	Q	_	29	advmod	_	_
 29	brezplačno	brezplačno	ADV	Rgp	Degree=Pos	27	advmod	_	SpaceAfter=No
 30	.	.	PUNCT	Z	_	3	punct	_	_
 
@@ -2093,7 +2093,7 @@
 2	oporoki	oporoka	NOUN	Ncfsl	Case=Loc|Gender=Fem|Number=Sing	4	obl	_	_
 3	je	biti	AUX	Va-r3s-n	Mood=Ind|Number=Sing|Person=3|Polarity=Pos|Tense=Pres|VerbForm=Fin	4	aux	_	_
 4	priznal	priznati	VERB	Vmep-sm	Aspect=Perf|Gender=Masc|Number=Sing|VerbForm=Part	0	root	_	_
-5	svoja	svoj	DET	Px-mda	Case=Acc|Gender=Masc|Number=Dual|Poss=Yes|PronType=Prs|Reflex=Yes	6	obl	_	_
+5	svoja	svoj	DET	Px-mda	Case=Acc|Gender=Masc|Number=Dual|Poss=Yes|PronType=Prs|Reflex=Yes	6	obj	_	_
 6	preživela	preživeti	VERB	Vmep-dm	Aspect=Perf|Gender=Masc|Number=Dual|VerbForm=Part	4	conj	_	_
 7	otroka	otrok	NOUN	Ncmsay	Animacy=Anim|Case=Acc|Gender=Masc|Number=Sing	6	obj	_	_
 8	in	in	CCONJ	Cc	_	10	cc	_	_

@@ -149,15 +149,15 @@
 6	zaljubljenega	_	_	_	_	_	_	_	NER=O
 7	v	_	_	_	_	_	_	_	NER=O
 8	bogato	_	_	_	_	_	_	_	NER=O
-9	Primičevo	_	_	_	_	_	_	_	NER=B-PER
-10	Julijo	_	_	_	_	_	_	_	NER=I-PER|SpaceAfter=No
+9	Primičevo	_	_	_	_	_	_	_	NER=B-DERIV-PER
+10	Julijo	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
 11	,	_	_	_	_	_	_	_	NER=O
 12	ki	_	_	_	_	_	_	_	NER=O
 13	ji	_	_	_	_	_	_	_	NER=O
 14	je	_	_	_	_	_	_	_	NER=O
 15	posvetil	_	_	_	_	_	_	_	NER=O
-16	Sonetni	_	_	_	_	_	_	_	NER=B-DERIV-PER
-17	venec	_	_	_	_	_	_	_	NER=O
+16	Sonetni	_	_	_	_	_	_	_	NER=B-MISC
+17	venec	_	_	_	_	_	_	_	NER=I-MISC
 18	(	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 19	1834	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 20	)	_	_	_	_	_	_	_	NER=O
@@ -241,10 +241,10 @@
 2	njegove	_	_	_	_	_	_	_	NER=O
 3	pesmi	_	_	_	_	_	_	_	NER=O
 4	Zdravljica	_	_	_	_	_	_	_	NER=B-MISC|SpaceAfter=No
-5	,	_	_	_	_	_	_	_	NER=O
-6	napisane	_	_	_	_	_	_	_	NER=O
-7	leta	_	_	_	_	_	_	_	NER=O
-8	1844	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+5	,	_	_	_	_	_	_	_	NER=I-MISC
+6	napisane	_	_	_	_	_	_	_	NER=I-MISC
+7	leta	_	_	_	_	_	_	_	NER=I-MISC
+8	1844	_	_	_	_	_	_	_	NER=I-MISC|SpaceAfter=No
 9	,	_	_	_	_	_	_	_	NER=O
 10	je	_	_	_	_	_	_	_	NER=O
 11	besedilo	_	_	_	_	_	_	_	NER=O
@@ -303,9 +303,9 @@
 6	Goldensteinov	_	_	_	_	_	_	_	NER=B-DERIV-PER
 7	miniaturni	_	_	_	_	_	_	_	NER=O
 8	portret	_	_	_	_	_	_	_	NER=O
-9	Prešerna	_	_	_	_	_	_	_	NER=B-MISC
-10	po	_	_	_	_	_	_	_	NER=I-MISC
-11	spominu	_	_	_	_	_	_	_	NER=I-MISC
+9	Prešerna	_	_	_	_	_	_	_	NER=B-PER
+10	po	_	_	_	_	_	_	_	NER=O
+11	spominu	_	_	_	_	_	_	_	NER=O
 
 # newpar id = 9
 # sent_id = 9.1
@@ -328,7 +328,7 @@
 16	Svetina	_	_	_	_	_	_	_	NER=B-PER
 17	(	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 18	pri	_	_	_	_	_	_	_	NER=O
-19	Muhovcu	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+19	Muhovcu	_	_	_	_	_	_	_	NER=B-LOC|SpaceAfter=No
 20	)	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 21	[	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 22	8	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
@@ -380,8 +380,8 @@
 24	na	_	_	_	_	_	_	_	NER=O
 25	Kopanju	_	_	_	_	_	_	_	NER=B-LOC
 26	pri	_	_	_	_	_	_	_	NER=O
-27	Veliki	_	_	_	_	_	_	_	NER=B-LOC
-28	Račni	_	_	_	_	_	_	_	NER=I-LOC|SpaceAfter=No
+27	Veliki	_	_	_	_	_	_	_	NER=B-PER
+28	Račni	_	_	_	_	_	_	_	NER=I-PER|SpaceAfter=No
 29	.	_	_	_	_	_	_	_	NER=O
 
 # newpar id = 10
@@ -665,7 +665,7 @@
 3	Čop	_	_	_	_	_	_	_	NER=B-PER
 4	in	_	_	_	_	_	_	_	NER=O
 5	Krajnska	_	_	_	_	_	_	_	NER=B-LOC
-6	čbelica	_	_	_	_	_	_	_	NER=O
+6	čbelica	_	_	_	_	_	_	_	NER=I-LOC
 
 # newpar id = 15
 # sent_id = 15.1
@@ -855,7 +855,7 @@
 14	s	_	_	_	_	_	_	_	NER=O
 15	Prešernom	_	_	_	_	_	_	_	NER=B-PER
 16	in	_	_	_	_	_	_	_	NER=O
-17	Čopom	_	_	_	_	_	_	_	NER=B-PER
+17	Čopom	_	_	_	_	_	_	_	NER=B-MISC
 18	so	_	_	_	_	_	_	_	NER=O
 19	se	_	_	_	_	_	_	_	NER=O
 20	zavzemali	_	_	_	_	_	_	_	NER=O
@@ -992,7 +992,7 @@
 
 # sent_id = 18.4
 # text = Metelčica je bila tako leta 1833 z zakonom prepovedana.
-1	Metelčica	_	_	_	_	_	_	_	NER=O
+1	Metelčica	_	_	_	_	_	_	_	NER=B-PER
 2	je	_	_	_	_	_	_	_	NER=O
 3	bila	_	_	_	_	_	_	_	NER=O
 4	tako	_	_	_	_	_	_	_	NER=O
@@ -1070,7 +1070,7 @@
 40	tudi	_	_	_	_	_	_	_	NER=O
 41	s	_	_	_	_	_	_	_	NER=O
 42	sonetom	_	_	_	_	_	_	_	NER=O
-43	Apel	_	_	_	_	_	_	_	NER=B-PER
+43	Apel	_	_	_	_	_	_	_	NER=O
 44	in	_	_	_	_	_	_	_	NER=O
 45	čevljar	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 46	,	_	_	_	_	_	_	_	NER=O
@@ -1104,8 +1104,8 @@
 # newpar id = 20
 # sent_id = 20.1
 # text = Julija Primic
-1	Julija	_	_	_	_	_	_	_	NER=O
-2	Primic	_	_	_	_	_	_	_	NER=B-PER
+1	Julija	_	_	_	_	_	_	_	NER=B-PER
+2	Primic	_	_	_	_	_	_	_	NER=I-PER
 
 # newpar id = 21
 # sent_id = 21.1
@@ -1227,7 +1227,7 @@
 2	1835	_	_	_	_	_	_	_	NER=O
 3	je	_	_	_	_	_	_	_	NER=O
 4	umrl	_	_	_	_	_	_	_	NER=O
-5	Prešernov	_	_	_	_	_	_	_	NER=B-PER
+5	Prešernov	_	_	_	_	_	_	_	NER=B-DERIV-PER
 6	stric	_	_	_	_	_	_	_	NER=O
 7	Jožef	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
 8	,	_	_	_	_	_	_	_	NER=O
@@ -1319,8 +1319,8 @@
 20	tudi	_	_	_	_	_	_	_	NER=O
 21	posvetilni	_	_	_	_	_	_	_	NER=O
 22	sonet	_	_	_	_	_	_	_	NER=O
-23	Matiji	_	_	_	_	_	_	_	NER=B-MISC
-24	Čopu	_	_	_	_	_	_	_	NER=I-MISC|SpaceAfter=No
+23	Matiji	_	_	_	_	_	_	_	NER=B-PER
+24	Čopu	_	_	_	_	_	_	_	NER=I-PER|SpaceAfter=No
 25	.	_	_	_	_	_	_	_	NER=O
 
 # newpar id = 23
@@ -1362,7 +1362,7 @@
 6	in	_	_	_	_	_	_	_	NER=O
 7	sicer	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 8	:	_	_	_	_	_	_	_	NER=O
-9	Terezijo	_	_	_	_	_	_	_	NER=O
+9	Terezijo	_	_	_	_	_	_	_	NER=B-PER
 10	(	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 11	15.	_	_	_	_	_	_	_	NER=O
 12	oktober	_	_	_	_	_	_	_	NER=O
@@ -1429,7 +1429,7 @@
 4	je	_	_	_	_	_	_	_	NER=O
 5	kasneje	_	_	_	_	_	_	_	NER=O
 6	napisala	_	_	_	_	_	_	_	NER=O
-7	Spomine	_	_	_	_	_	_	_	NER=B-PER|SpaceAfter=No
+7	Spomine	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 8	,	_	_	_	_	_	_	_	NER=O
 9	v	_	_	_	_	_	_	_	NER=O
 10	katerih	_	_	_	_	_	_	_	NER=O
@@ -1505,7 +1505,7 @@
 
 # sent_id = 24.3
 # text = Korytko je umrl leta 1839.
-1	Korytko	_	_	_	_	_	_	_	NER=O
+1	Korytko	_	_	_	_	_	_	_	NER=B-PER
 2	je	_	_	_	_	_	_	_	NER=O
 3	umrl	_	_	_	_	_	_	_	NER=O
 4	leta	_	_	_	_	_	_	_	NER=O
@@ -1567,11 +1567,11 @@
 9	Valentina	_	_	_	_	_	_	_	NER=B-PER
 10	Vodnika	_	_	_	_	_	_	_	NER=I-PER
 11	in	_	_	_	_	_	_	_	NER=O
-12	Ta	_	_	_	_	_	_	_	NER=B-MISC
-13	veseli	_	_	_	_	_	_	_	NER=I-MISC
-14	dan	_	_	_	_	_	_	_	NER=I-MISC
-15	ali	_	_	_	_	_	_	_	NER=I-MISC
-16	Matiček	_	_	_	_	_	_	_	NER=I-MISC
+12	Ta	_	_	_	_	_	_	_	NER=O
+13	veseli	_	_	_	_	_	_	_	NER=O
+14	dan	_	_	_	_	_	_	_	NER=O
+15	ali	_	_	_	_	_	_	_	NER=O
+16	Matiček	_	_	_	_	_	_	_	NER=B-PER
 17	se	_	_	_	_	_	_	_	NER=O
 18	ženi	_	_	_	_	_	_	_	NER=O
 19	Antona	_	_	_	_	_	_	_	NER=B-PER
@@ -1595,7 +1595,7 @@
 
 # sent_id = 25.4
 # text = Smole je umrl leta 1840 na praznovanju svojega godu v Prešernovi prisotnosti.
-1	Smole	_	_	_	_	_	_	_	NER=O
+1	Smole	_	_	_	_	_	_	_	NER=B-PER
 2	je	_	_	_	_	_	_	_	NER=O
 3	umrl	_	_	_	_	_	_	_	NER=O
 4	leta	_	_	_	_	_	_	_	NER=O
@@ -1605,7 +1605,7 @@
 8	svojega	_	_	_	_	_	_	_	NER=O
 9	godu	_	_	_	_	_	_	_	NER=O
 10	v	_	_	_	_	_	_	_	NER=O
-11	Prešernovi	_	_	_	_	_	_	_	NER=B-LOC
+11	Prešernovi	_	_	_	_	_	_	_	NER=B-DERIV-PER
 12	prisotnosti	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 13	.	_	_	_	_	_	_	_	NER=O
 
@@ -1619,8 +1619,8 @@
 5	neuslišane	_	_	_	_	_	_	_	NER=O
 6	ljubezni	_	_	_	_	_	_	_	NER=O
 7	do	_	_	_	_	_	_	_	NER=O
-8	Primičeve	_	_	_	_	_	_	_	NER=B-PER
-9	Julije	_	_	_	_	_	_	_	NER=I-PER
+8	Primičeve	_	_	_	_	_	_	_	NER=B-DERIV-PER
+9	Julije	_	_	_	_	_	_	_	NER=B-PER
 10	je	_	_	_	_	_	_	_	NER=O
 11	Prešeren	_	_	_	_	_	_	_	NER=B-PER
 12	zapadel	_	_	_	_	_	_	_	NER=O
@@ -1718,7 +1718,7 @@
 7	in	_	_	_	_	_	_	_	NER=I-ORG
 8	rokodelske	_	_	_	_	_	_	_	NER=I-ORG
 9	novice	_	_	_	_	_	_	_	NER=I-ORG
-10	veterinarja	_	_	_	_	_	_	_	NER=I-ORG
+10	veterinarja	_	_	_	_	_	_	_	NER=O
 11	in	_	_	_	_	_	_	_	NER=O
 12	politika	_	_	_	_	_	_	_	NER=O
 13	Janeza	_	_	_	_	_	_	_	NER=B-PER
@@ -1775,8 +1775,8 @@
 4	vseeno	_	_	_	_	_	_	_	NER=O
 5	objavil	_	_	_	_	_	_	_	NER=O
 6	nekatere	_	_	_	_	_	_	_	NER=O
-7	Prešernove	_	_	_	_	_	_	_	NER=B-MISC
-8	pesmi	_	_	_	_	_	_	_	NER=I-MISC|SpaceAfter=No
+7	Prešernove	_	_	_	_	_	_	_	NER=B-DERIV-PER
+8	pesmi	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 9	,	_	_	_	_	_	_	_	NER=O
 10	vendar	_	_	_	_	_	_	_	NER=O
 11	na	_	_	_	_	_	_	_	NER=O
@@ -1837,7 +1837,7 @@
 # text = Prva izdaja Poezij
 1	Prva	_	_	_	_	_	_	_	NER=O
 2	izdaja	_	_	_	_	_	_	_	NER=O
-3	Poezij	_	_	_	_	_	_	_	NER=B-MISC
+3	Poezij	_	_	_	_	_	_	_	NER=B-ORG
 
 # newpar id = 30
 # sent_id = 30.1
@@ -1947,7 +1947,7 @@
 3	je	_	_	_	_	_	_	_	NER=O
 4	bila	_	_	_	_	_	_	_	NER=O
 5	odobrena	_	_	_	_	_	_	_	NER=O
-6	Prešernova	_	_	_	_	_	_	_	NER=O
+6	Prešernova	_	_	_	_	_	_	_	NER=B-DERIV-PER
 7	prošnja	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 8	,	_	_	_	_	_	_	_	NER=O
 9	šesta	_	_	_	_	_	_	_	NER=O
@@ -2019,8 +2019,8 @@
 2	je	_	_	_	_	_	_	_	NER=O
 3	izšla	_	_	_	_	_	_	_	NER=O
 4	v	_	_	_	_	_	_	_	NER=O
-5	Bleiweisovih	_	_	_	_	_	_	_	NER=B-MISC
-6	Novicah	_	_	_	_	_	_	_	NER=I-MISC|SpaceAfter=No
+5	Bleiweisovih	_	_	_	_	_	_	_	NER=B-DERIV-PER
+6	Novicah	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 7	,	_	_	_	_	_	_	_	NER=O
 8	nekatere	_	_	_	_	_	_	_	NER=O
 9	pesmi	_	_	_	_	_	_	_	NER=O
@@ -2116,9 +2116,9 @@
 7	veljaki	_	_	_	_	_	_	_	NER=O
 8	uničili	_	_	_	_	_	_	_	NER=O
 9	nekaj	_	_	_	_	_	_	_	NER=O
-10	Prešernove	_	_	_	_	_	_	_	NER=B-ORG
-11	književne	_	_	_	_	_	_	_	NER=I-ORG
-12	zapuščine	_	_	_	_	_	_	_	NER=I-ORG|SpaceAfter=No
+10	Prešernove	_	_	_	_	_	_	_	NER=B-DERIV-PER
+11	književne	_	_	_	_	_	_	_	NER=O
+12	zapuščine	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
 13	.	_	_	_	_	_	_	_	NER=O
 
 # sent_id = 34.2
@@ -2180,10 +2180,10 @@
 7	za	_	_	_	_	_	_	_	NER=O
 8	postavitev	_	_	_	_	_	_	_	NER=O
 9	spomenika	_	_	_	_	_	_	_	NER=O
-10	Prešernu	_	_	_	_	_	_	_	NER=B-PER
-11	na	_	_	_	_	_	_	_	NER=O
-12	kranjskem	_	_	_	_	_	_	_	NER=O
-13	pokopališču	_	_	_	_	_	_	_	NER=O|SpaceAfter=No
+10	Prešernu	_	_	_	_	_	_	_	NER=B-MISC
+11	na	_	_	_	_	_	_	_	NER=I-MISC
+12	kranjskem	_	_	_	_	_	_	_	NER=I-MISC
+13	pokopališču	_	_	_	_	_	_	_	NER=I-MISC|SpaceAfter=No
 14	.	_	_	_	_	_	_	_	NER=O
 
 # sent_id = 36.2
@@ -2205,8 +2205,8 @@
 15	1852	_	_	_	_	_	_	_	NER=O
 16	v	_	_	_	_	_	_	_	NER=O
 17	sedanjem	_	_	_	_	_	_	_	NER=O
-18	Prešernovem	_	_	_	_	_	_	_	NER=B-LOC
-19	gaju	_	_	_	_	_	_	_	NER=I-LOC
+18	Prešernovem	_	_	_	_	_	_	_	NER=B-DERIV-PER
+19	gaju	_	_	_	_	_	_	_	NER=O
 20	postavili	_	_	_	_	_	_	_	NER=O
 21	spomenik	_	_	_	_	_	_	_	NER=O
 22	pokojnemu	_	_	_	_	_	_	_	NER=O
