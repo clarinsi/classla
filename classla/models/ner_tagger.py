@@ -1,7 +1,7 @@
 """
 Entry point for training and evaluating an NER tagger.
 
-This tagger uses BiLSTM layers with character and word-level representations, and a CRF decoding layer 
+This tagger uses BiLSTM layers with character and word-level representations, and a CRF decoding layer
 to produce NER predictions.
 For details please refer to paper: https://nlp.stanford.edu/pubs/qi2018universal.pdf.
 """
@@ -119,7 +119,7 @@ def train(args):
     pretrain = Pretrain(None, vec_file, args['pretrain_max_vocab'], save_to_file=False)
 
     if args['charlm']:
-        if args['charlm_shorthand'] is None: 
+        if args['charlm_shorthand'] is None:
             logger.info("CharLM Shorthand is required for loading pretrained CharLM model...")
             sys.exit(0)
         logger.info('Use pretrained contextualized char embedding')
@@ -155,7 +155,7 @@ def train(args):
     # LR scheduling
     if args['lr_decay'] > 0:
         scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(trainer.optimizer, mode='max', factor=args['lr_decay'], \
-            patience=args['patience'], verbose=True, min_lr=args['min_lr'])
+            patience=args['patience'], min_lr=args['min_lr'])
     else:
         scheduler = None
 
@@ -198,7 +198,7 @@ def train(args):
                 # lr schedule
                 if scheduler is not None:
                     scheduler.step(dev_score)
-            
+
             # check stopping
             current_lr = trainer.optimizer.param_groups[0]['lr']
             if global_step >= args['max_steps'] or current_lr <= args['min_lr']:
@@ -234,7 +234,7 @@ def evaluate(args):
     logger.info("Loading data with batch size {}...".format(args['batch_size']))
     doc = Document(json.load(open(args['eval_file'])))
     batch = DataLoader(doc, args['batch_size'], loaded_args, vocab=vocab, evaluation=True)
-    
+
     logger.info("Start evaluation...")
     preds = []
     for i, b in enumerate(batch):

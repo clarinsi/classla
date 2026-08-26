@@ -222,7 +222,7 @@ def train(args):
     params = [param for param in model.parameters() if param.requires_grad]
     optimizer = torch.optim.SGD(params, lr=args['lr0'], momentum=args['momentum'], weight_decay=args['weight_decay'])
     criterion = torch.nn.CrossEntropyLoss()
-    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, verbose=True, factor=args['anneal'], patience=args['patience'])
+    scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(optimizer, factor=args['anneal'], patience=args['patience'])
 
     writer = None
     if args['summary']:

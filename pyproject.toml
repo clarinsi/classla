@@ -29,12 +29,14 @@ classifiers = [
     'Programming Language :: Python :: 3.11',
     'Programming Language :: Python :: 3.12',
     'Programming Language :: Python :: 3.13',
+    'Programming Language :: Python :: 3.14',
 ]
 dependencies = [
     'numpy',
     'requests',
     'protobuf==4.21.2',
-    'torch<=2.6',
+    'torch<=2.6; python_version < "3.14"',
+    'torch>=2.9; python_version >= "3.14"',
     'tqdm',
     'obeliks>=1.1.7',
     'reldi-tokeniser==1.0.3',
@@ -51,4 +53,4 @@ path = "classla/_version.py"
 packages = ["classla"]
 
 [project.optional-dependencies]
-dev = ["pytest>=6.0", "twine>=4.0.2", "build"]
+dev = ["pytest>=6.0", "twine>=4.0.2", "build", "uv"]
