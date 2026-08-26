@@ -32,16 +32,16 @@ classifiers = [
     'Programming Language :: Python :: 3.14',
 ]
 dependencies = [
-    'numpy',
+    'numpy<2; python_version < "3.13"',
+    'numpy>=2; python_version >= "3.13"',
     'requests',
     'protobuf==4.21.2',
-    'torch<=2.6; python_version < "3.14"',
+    'torch>=1.13,<=2.6; python_version < "3.14"',
     'torch>=2.9; python_version >= "3.14"',
     'tqdm',
     'obeliks>=1.1.7',
     'reldi-tokeniser==1.0.3',
 ]
-
 [project.urls]
 Homepage = "https://clarin.si"
 Repository = "https://github.com/clarinsi/classla"
